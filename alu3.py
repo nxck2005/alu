@@ -49,8 +49,10 @@ PC = 0
 mode = 'STEP'
 running_clock = False
 
+# Opcodes
 OPCODES = ['ADD', 'SUB', 'MOV', 'JMP']
 
+# Utility functions
 def to_int(bits):
     return int("".join(map(str, bits)), 2)
 
@@ -67,6 +69,7 @@ def ripple_add(a, b):
     return result
 
 def ripple_sub(a, b):
+    # 2's complement of B = invert + 1
     b_inv = [1 - bit for bit in b]
     b_twos = ripple_add(b_inv, [0, 0, 0, 1])
     return ripple_add(a, b_twos)
@@ -77,8 +80,11 @@ def draw_bits(bits, x, y, label):
         pygame.draw.rect(screen, color, (x + i*(BIT_SIZE + GAP), y, BIT_SIZE, BIT_SIZE))
         pygame.draw.rect(screen, BLACK, (x + i*(BIT_SIZE + GAP), y, BIT_SIZE, BIT_SIZE), 2)
 
+    # Label
     lbl = font.render(label, True, WHITE)
     screen.blit(lbl, (x - 70, y + 5))
+
+    # Decimal
     value = to_int(bits)
     dec_lbl = font.render(f"= {value}", True, YELLOW)
     screen.blit(dec_lbl, (x + len(bits)*(BIT_SIZE + GAP) + 10, y + 5))
@@ -107,13 +113,11 @@ def execute():
         out = ripple_add(regA, regB)
     elif opcode == 1:  # SUB
         out = ripple_sub(regA, regB)
-    elif opcode == 2:  # MOV RAM[operand] -> regA
-        if operand < len(RAM):
-            regA = RAM[operand][:]
-    elif opcode == 3:  # JMP
-        if regA == [0, 0, 0, 0]:
-            PC = operand
-            return
+    elif opcode == 2:  # MOV operand -> regA
+        regA = to_bits(operand)  # Use operand as immediate value
+    elif opcode == 3:  # JMP (unconditional)
+        PC = operand
+        return  # Exit to prevent PC increment
 
     PC = (PC + 1) % len(memory)
 
