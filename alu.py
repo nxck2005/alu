@@ -1,9 +1,16 @@
+# Key	Action
+# S	 Step: Execute one instruction manually
+# C	 Toggle between Step and Clock (4Hz) mode
+# SPACE	▶ Pause/Resume clock mode execution
+# I	 Cycle through the 4 instructions: ADD → SUB → MOV → JUMP
+# 1	 Shift Register A left (new bit is random)
+# 2	 Shift Register B left (new bit is random)
+
 import pygame
 import sys
 import time
 import random
 
-# Constants
 WIDTH, HEIGHT = 800, 600
 FPS = 60
 BIT_SIZE = 30
@@ -11,11 +18,9 @@ GAP = 10
 START_X, START_Y = 50, 100
 CLOCK_SPEED = 4  # Hz
 
-# ALU Ops
 INSTRUCTIONS = ["ADD", "SUB", "MOV", "JUMP"]
 instruction_pointer = 0
 
-# Colors
 BLACK, WHITE, RED, GREEN, BLUE, GREY, YELLOW = (0,0,0), (255,255,255), (255,0,0), (0,255,0), (0,0,255), (180,180,180), (255,255,0)
 
 pygame.init()
@@ -24,12 +29,10 @@ pygame.display.set_caption("4-bit ALU Simulator")
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("Consolas", 20)
 
-# Registers
 regA = [0, 0, 0, 0]
 regB = [0, 0, 0, 0]
 out = [0, 0, 0, 0]
 
-# Control
 step_mode = True
 auto_clock = False
 last_tick = time.time()
