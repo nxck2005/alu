@@ -2,7 +2,6 @@
 # ALU takes speed and bits for archsize, Memory takes archsize and rows
 # Three registers, one accumulator and two data.
 
-
 # Use symmetrical number of bits (4, 8, 16)
 # Use 4 as minumum
 
@@ -67,6 +66,7 @@ class Memory:
             if x not in (0,1):
                 print('Every value in new row must be 0 or 1. Not modified.')
                 return
+        self.MEMORY[row] = newrow.copy()
     
     def printMemory(self):
         print("  ", end='')
