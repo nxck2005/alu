@@ -1,2 +1,4 @@
 # alu
-vibe coded alu for just presenting
+not vibe coded now B)
+
+
