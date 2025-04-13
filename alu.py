@@ -1,3 +1,8 @@
+# Program to simulate an ALU.
+# ALU takes speed and bits for archsize, Memory takes archsize and rows
+# Three registers, one accumulator and two data.
+
+
 # Use symmetrical number of bits (4, 8, 16)
 # Use 4 as minumum
 
