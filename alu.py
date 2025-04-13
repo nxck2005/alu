@@ -101,9 +101,7 @@ def main():
     
     alu = ALU(speed, bits)
     mem = Memory(memsize, bits)
-    
-    mem.printMemory()
-    mem.printStatus()    
+
     mem.editIndex(1, 3, 1)
     mem.printMemory()
     mem.printStatus()
