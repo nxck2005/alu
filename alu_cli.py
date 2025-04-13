@@ -5,12 +5,16 @@ class ALU:
     FLAGS = [0, 0, 0]
         
     def __init__(self, speed: int = 4, bits: int = 8):
+        
         # for genning registers
         sizes = [bits, bits, bits]
+        
         self.bits = bits
         self.speed = speed
         self.FLAGS = [0,0,0]
         self.REGISTERS = [[0]*size for size in sizes]
+        self.cycles = 0
+        
         print(f"ALU initialized. Architecture: {self.bits} bit.")
         print(f"Running at {self.speed} Hz.")
         print("Registers:")
@@ -18,15 +22,22 @@ class ALU:
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
 
+
 class Memory:
     def __init__(self, rows, archsize):
         self.rows = rows
         self.MEMORY = []
-        for _ in range(rows):
+        for _ in range(self.rows):
             self.MEMORY.append([0]*archsize)
-        print(f'Memory initialized. {rows} lines.')
-        print(self.MEMORY)
-        
+        print(f'Memory initialized. {self.rows} lines.')
+        print("  ", end='')
+        for i in range(self.rows):
+            print(f' {i}', end=" ")
+        print()
+        i = 0
+        for line in self.MEMORY:
+            print(f"{i} {line}")
+            
 
 def main():
     speed = 4
