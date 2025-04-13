@@ -1,4 +1,5 @@
-import typing
+# Use symmetrical number of bits (4, 8, 16)
+# Use 4 as minumum
 
 class ALU:
     # Flags: ZF, CF, OF
@@ -73,7 +74,7 @@ class Memory:
             i += 1
             
     def printStatus(self):
-        print(f"Memory size: {self.rows} rows, Total: {(self.rows * self.archsize / 8):.2f}B")
+        print(f"Memory size: {self.rows} rows, Total: {(self.rows * self.archsize / 8):.2f} B")
         print("  ", end='')
         for i in range(self.rows):
             print(f' {i}', end=" ")
@@ -94,8 +95,11 @@ def main():
     alu = ALU(speed, bits)
     mem = Memory(memsize, bits)
     
+    mem.printMemory()
+    mem.printStatus()    
     mem.editIndex(1, 3, 1)
     mem.printMemory()
+    mem.printStatus()
     
 
 if __name__ == '__main__':
