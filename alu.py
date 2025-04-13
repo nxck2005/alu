@@ -72,6 +72,17 @@ class Memory:
             print(f"{i} {line}")
             i += 1
             
+    def printStatus(self):
+        print(f"Memory size: {self.rows} rows, Total: {(self.rows * self.archsize / 8):.2f}B")
+        print("  ", end='')
+        for i in range(self.rows):
+            print(f' {i}', end=" ")
+        print()
+        i = 0
+        for line in self.MEMORY:
+            print(f"{i} {line}")
+            i += 1
+            
 
 def main():
     speed = 4
