@@ -21,6 +21,12 @@ class ALU:
         print(f"AX: {self.REGISTERS[0]}")
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
+        
+    def printRegisters(self):
+        print("Registers:")
+        print(f"AX: {self.REGISTERS[0]}")
+        print(f"BX: {self.REGISTERS[1]}")
+        print(f"CX: {self.REGISTERS[2]}")
 
 
 class Memory:
@@ -54,7 +60,7 @@ class Memory:
         for x in newrow:
             if x not in (0,1):
                 print('Every value in new row must be 0 or 1. Not modified.')
-                returnS
+                return
     
     def printMemory(self):
         print("  ", end='')
