@@ -94,9 +94,11 @@ def main():
     speed = 4
     bits = 8
     memsize = 8
+    
     # bits = int(input("Number of bits for ALU: "))
     # speed = int(input("Speed for ALU in Hz: "))
     # memsize = int(input("Rows of memory: "))
+    
     alu = ALU(speed, bits)
     mem = Memory(memsize, bits)
     
