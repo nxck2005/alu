@@ -3,13 +3,19 @@
 # Three registers, one accumulator and two data.
 
 # Use symmetrical number of bits (4, 8, 16)
-# Use 4 as minumum
+# Uses 4 as minumum
+
+validArchSizes = (4,8,16,32,64)
 
 class ALU:
     # Flags: ZF, CF, OF
     FLAGS = [0, 0, 0]
         
     def __init__(self, speed: int = 4, bits: int = 8):
+        
+        if bits not in validArchSizes:
+            print("Invalid architecture size provided for init process. Using 16.")
+            bits = 16
         
         # for genning registers
         sizes = [bits, bits, bits]
@@ -32,6 +38,29 @@ class ALU:
         print(f"AX: {self.REGISTERS[0]}")
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
+        
+    def execute(self, memory, row=0):
+        
+        # pipeline
+        # for execution:
+        # fetch the row of instruction from memory
+        # decode what to do, first half is opcode, second is data
+        # execute, copy result to AX if arithmetic is done
+        # one clock cycle passes after appropriate time.
+        
+        if len(instruction) not in validArchSizes:
+            print("Architecture isn't valid for proper execution. Use 4,8,16,32 or 64bits.")
+            return
+        
+        self.cycles += 1
+        
+        instruction = memory.MEMORY[row]
+        
+    def status(self):
+        print(f"Architecture size: {self.bits}bit")
+        print(f"Clock speed: {self.speed} Hz")
+            
+        
 
 
 class Memory:
@@ -92,7 +121,7 @@ class Memory:
 
 def main():
     speed = 4
-    bits = 8
+    bits = 9
     memsize = 8
     
     # bits = int(input("Number of bits for ALU: "))
