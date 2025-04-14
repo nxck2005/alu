@@ -59,7 +59,16 @@ class ALU:
     def status(self):
         print(f"Architecture size: {self.bits}bit")
         print(f"Clock speed: {self.speed} Hz")
-            
+        print("Registers:")
+        print(f"AX: {self.REGISTERS[0]}")
+        print(f"BX: {self.REGISTERS[1]}")
+        print(f"CX: {self.REGISTERS[2]}")
+        
+    def registers(self):
+        print("Registers:")
+        print(f"AX: {self.REGISTERS[0]}")
+        print(f"BX: {self.REGISTERS[1]}")
+        print(f"CX: {self.REGISTERS[2]}")
         
 
 
