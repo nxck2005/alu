@@ -33,7 +33,7 @@ class ALU:
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
         
-    def printRegisters(self):
+    def registers(self):
         print("Registers:")
         print(f"AX: {self.REGISTERS[0]}")
         print(f"BX: {self.REGISTERS[1]}")
@@ -97,7 +97,7 @@ class Memory:
                 return
         self.MEMORY[row] = newrow.copy()
     
-    def printMemory(self):
+    def memory(self):
         print("  ", end='')
         for i in range(self.rows):
             print(f' {i}', end=" ")
@@ -107,7 +107,7 @@ class Memory:
             print(f"{i} {line}")
             i += 1
             
-    def printStatus(self):
+    def status(self):
         print(f"Memory size: {self.rows} rows, Total: {(self.rows * self.archsize / 8):.2f} B")
         print("  ", end='')
         for i in range(self.rows):
@@ -121,7 +121,7 @@ class Memory:
 
 def main():
     speed = 4
-    bits = 9
+    bits = 8
     memsize = 8
     
     # bits = int(input("Number of bits for ALU: "))
@@ -132,8 +132,10 @@ def main():
     mem = Memory(memsize, bits)
 
     mem.editIndex(1, 3, 1)
-    mem.printMemory()
-    mem.printStatus()
+    mem.memory()
+    mem.status()
+    
+    alu.status()
     
 
 if __name__ == '__main__':
