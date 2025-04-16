@@ -82,6 +82,13 @@ class ALU:
         print(f"AX: {self.REGISTERS[0]}")
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
+        
+    def decode(self, opcode):
+        if instructionSet[opcode]:
+            print(instructionSet[opcode])
+        else:
+            print("Instruction not found.")
+        
 
 
 class Memory:
