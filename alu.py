@@ -10,6 +10,17 @@
 
 validArchSizes = (8,16,32,64)
 
+# instruction set
+# some left blank
+
+instructionSet = {
+    (0,0,0,0): "NOP", 
+    (0,0,0,1): "ADD",
+    (0,0,1,0): "SUB",
+    (0,0,1,1): "ADC",
+    (0,1,0,0): "SBB",
+}
+
 class ALU:
     # Flags: ZF, CF, OF
     FLAGS = [0, 0, 0]
