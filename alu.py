@@ -5,7 +5,7 @@
 # Use symmetrical number of bits (4, 8, 16)
 # Uses 8 as minumum
 
-# 4 bits for opcode.
+# first 4 bits for opcode.
 # so space for 16 instructions to be encoded.
 
 validArchSizes = (8,16,32,64)
@@ -64,7 +64,7 @@ class ALU:
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
         
-    def execute(self, memory, row=0):
+    def runCycle(self, memory, row=0):
         
         # pipeline
         # for execution:
@@ -72,6 +72,9 @@ class ALU:
         # decode what to do, first half is opcode, second is data
         # execute, copy result to AX if arithmetic is done
         # one clock cycle passes after appropriate time.
+        
+        # FETCH
+        
         
         return
 
@@ -84,12 +87,21 @@ class ALU:
         print(f"CX: {self.REGISTERS[2]}")
         
     def decode(self, opcode):
-        if instructionSet[opcode]:
-            print(instructionSet[opcode])
-        else:
-            print("Instruction not found.")
+        opcode = tuple(opcode)
+        try:
+            if instructionSet[opcode]:
+                return instructionSet[opcode]
+        except:
+            print("Opcode couldn't be decoded. DECODE returned NOP")
+            return "NOP"
+            
+    def fetch(self, row):
+        bits = (row[0:4])
+        return bits
+    
+    def execute(self):
+        pass
         
-
 
 class Memory:
     def __init__(self, rows, archsize):
@@ -164,6 +176,12 @@ def main():
     mem.status()
     
     alu.status()
+    print("Result of fetch")
+    fRes = alu.fetch([0,0,1,0])
+    print(fRes)
+    print("Result of decode")
+    dRes = alu.decode(fRes)
+    print(dRes)
     
 
 if __name__ == '__main__':
