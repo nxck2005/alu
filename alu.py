@@ -1,46 +1,41 @@
 # Program to simulate an ALU.
-# ALU takes speed and bits for archsize, Memory takes archsize and rows
+# ALU takes speed as an argument. Mem takes rows
 # Three registers, one accumulator and two data.
 
-# Use symmetrical number of bits (4, 8, 16)
-# Uses 8 as minumum
-
-# first 4 bits for opcode.
-# so space for 16 instructions to be encoded.
-
-validArchSizes = (8,16,32,64)
+# 32 bit
+validArchSizes = 32
 
 # instruction set
 # some left blank
 
+# 6 bit opcode, rest are needed data as per instruction
+
 instructionSet = {
-    (0,0,0,0): "NOP", 
-    (0,0,0,1): "ADD",
-    (0,0,1,0): "SUB",
-    (0,0,1,1): "ADC",
-    (0,1,0,0): "SBB",
-    (0,1,0,1): "AND",
-    (0,1,1,0): "NOT",
-    (0,1,1,1): "OR",
-    (1,0,0,0): "XOR",
-    (1,0,0,1): "NOP",
-    (1,0,1,0): "NOP",
-    (1,0,1,1): "NOP",
-    (1,1,0,0): "NOP",
-    (1,1,0,1): "NOP",
-    (1,1,1,0): "NOP",
-    (1,1,1,1): "NOP"
+    (0,0,0,0): "NOP", # no operation
+    (0,0,0,1): "ADD", # add value to accumulator
+    (0,0,1,0): "SUB", # subtract value from accumulator
+    (0,0,1,1): "ADC", # add value to accumulator, with carry flag
+    (0,1,0,0): "SBB", # subtract value from accumulator, with carry flag as borrow
+    (0,1,0,1): "AND", # do a logical AND between provided operand and AX, store result in AX
+    (0,1,1,0): "NOT", # logical NOT on the value provided, store in AX
+    (0,1,1,1): "OR",  # logical OR between value provided and AX, store result in AX
+    (1,0,0,0): "XOR", # logical XOR between value provided 
+    (1,0,0,1): "LHA", # load immediate value to high 2byte of AX
+    (1,0,1,0): "LLA", # load immediate value to low 2byte of AX
+    (1,0,1,1): "LHB", # load immediate value to high 2byte of BX
+    (1,1,0,0): "LLB", # load immediate value to low 2byte of BX
+    (1,1,0,1): "LHC", # load immediate value to high 2byte of CX
+    (1,1,1,0): "LLC", # load immediate value to low 2byte to CX
+    (1,1,1,1): "INC", # increment a register
 }
 
 class ALU:
     # Flags: ZF, CF, OF
     FLAGS = [0, 0, 0]
         
-    def __init__(self, speed: int = 4, bits: int = 8):
+    def __init__(self, speed: int = 4):
         
-        if bits not in validArchSizes:
-            print("Invalid architecture size provided for init process. Using 16.")
-            bits = 16
+        bits = validArchSizes
         
         # for genning registers
         sizes = [bits, bits, bits]
@@ -75,6 +70,8 @@ class ALU:
         
         # FETCH
         
+        opcode = self.fetch(memory.MEMORY[row])
+        
         
         return
 
@@ -95,6 +92,7 @@ class ALU:
             print("Opcode couldn't be decoded. DECODE returned NOP")
             return "NOP"
             
+    # update opcode length when its decided
     def fetch(self, row):
         bits = (row[0:4])
         return bits
@@ -104,7 +102,8 @@ class ALU:
         
 
 class Memory:
-    def __init__(self, rows, archsize):
+    def __init__(self, rows):
+        archsize = validArchSizes
         self.rows = rows
         self.archsize = archsize
         self.MEMORY = []
@@ -112,12 +111,11 @@ class Memory:
             self.MEMORY.append([0]*archsize)
         print(f'Memory initialized. {self.rows} lines.')
         print("  ", end='')
-        for i in range(self.rows):
-            print(f' {i}', end=" ")
         print()
         i = 0
         for line in self.MEMORY:
             print(f"{i} {line}")
+            i += 1
             
     def editIndex(self, row, index, new):
         if new in (0,1) and row <= self.rows and index <= self.archsize:
@@ -139,9 +137,6 @@ class Memory:
     
     def memory(self):
         print("  ", end='')
-        for i in range(self.rows):
-            print(f' {i}', end=" ")
-        print()
         i = 0
         for line in self.MEMORY:
             print(f"{i} {line}")
@@ -150,9 +145,6 @@ class Memory:
     def status(self):
         print(f"Memory size: {self.rows} rows, Total: {(self.rows * self.archsize / 8):.2f} B")
         print("  ", end='')
-        for i in range(self.rows):
-            print(f' {i}', end=" ")
-        print()
         i = 0
         for line in self.MEMORY:
             print(f"{i} {line}")
@@ -161,27 +153,15 @@ class Memory:
 
 def main():
     speed = 4
-    bits = 8
     memsize = 8 # rows
     
     # bits = int(input("Number of bits for ALU: "))
     # speed = int(input("Speed for ALU in Hz: "))
     # memsize = int(input("Rows of memory: "))
     
-    alu = ALU(speed, bits)
-    mem = Memory(memsize, bits)
+    alu = ALU(speed)
+    mem = Memory(memsize)
 
-    mem.editIndex(1, 3, 1)
-    mem.memory()
-    mem.status()
-    
-    alu.status()
-    print("Result of fetch")
-    fRes = alu.fetch([0,0,1,0])
-    print(fRes)
-    print("Result of decode")
-    dRes = alu.decode(fRes)
-    print(dRes)
     
 
 if __name__ == '__main__':
