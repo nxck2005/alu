@@ -10,23 +10,27 @@ validArchSizes = 32
 
 # 6 bit opcode, rest are needed data as per instruction
 
+# 6 - 10 bits for operands as needed - 16 data bits
+#    register reference or addressing mode
+
 instructionSet = {
-    (0,0,0,0): "NOP", # no operation
-    (0,0,0,1): "ADD", # add value to accumulator
-    (0,0,1,0): "SUB", # subtract value from accumulator
-    (0,0,1,1): "ADC", # add value to accumulator, with carry flag
-    (0,1,0,0): "SBB", # subtract value from accumulator, with carry flag as borrow
-    (0,1,0,1): "AND", # do a logical AND between provided operand and AX, store result in AX
-    (0,1,1,0): "NOT", # logical NOT on the value provided, store in AX
-    (0,1,1,1): "OR",  # logical OR between value provided and AX, store result in AX
-    (1,0,0,0): "XOR", # logical XOR between value provided 
-    (1,0,0,1): "LHA", # load immediate value to high 2byte of AX
-    (1,0,1,0): "LLA", # load immediate value to low 2byte of AX
-    (1,0,1,1): "LHB", # load immediate value to high 2byte of BX
-    (1,1,0,0): "LLB", # load immediate value to low 2byte of BX
-    (1,1,0,1): "LHC", # load immediate value to high 2byte of CX
-    (1,1,1,0): "LLC", # load immediate value to low 2byte to CX
-    (1,1,1,1): "INC", # increment a register
+    (0,0,0,0,0,0): "NOP", # no operation
+    (0,0,0,0,0,1): "ADD", # add value to accumulator
+    (0,0,0,0,1,0): "SUB", # subtract value from accumulator
+    (0,0,0,0,1,1): "ADC", # add value to accumulator, with carry flag
+    (0,0,0,1,0,0): "SBB", # subtract value from accumulator, with carry flag as borrow
+    (0,0,0,1,0,1): "AND", # do a logical AND between provided operand and AX, store result in AX
+    (0,0,0,1,1,0): "NOT", # logical NOT on the value provided, store in AX
+    (0,0,0,1,1,1): "OR",  # logical OR between value provided and AX, store result in AX
+    (0,0,1,0,0,0): "XOR", # logical XOR between value provided 
+    (0,0,1,0,0,1): "LHA", # load immediate value to high 2byte of AX
+    (0,0,1,0,1,0): "LLA", # load immediate value to low 2byte of AX
+    (0,0,1,0,1,1): "LHB", # load immediate value to high 2byte of BX
+    (0,0,1,1,0,0): "LLB", # load immediate value to low 2byte of BX
+    (0,0,1,1,0,1): "LHC", # load immediate value to high 2byte of CX
+    (0,0,1,1,1,0): "LLC", # load immediate value to low 2byte to CX
+    (0,0,1,1,1,1): "INC", # increment a register
+    (0,1,0,0,0,0): "DEC", # decrement a register
 }
 
 class ALU:
