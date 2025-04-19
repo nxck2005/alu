@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route('/alu')
 def alu():
-    return "there'll be something here someday ;)"
+    return render_template("alu.html")
