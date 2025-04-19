@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% block content %}
-<h4> Registers: </h4>
+<h4> Registers: (AX, BX, CX) </h4>
 {% for reg in aluObj.REGISTERS %}
 <p> {% for rv in reg %} {{ rv }} {% endfor %}</p>
 {% endfor %} <!-- some bs -->
