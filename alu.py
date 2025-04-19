@@ -141,8 +141,28 @@ class ALU:
             
         return decimal
         
+    def decToBin(self, number):
         
-
+        # uses division by 2
+        num = number
+        
+        binary = []
+        
+        # quotient and remainder
+        q = None
+        r = None
+        
+        # divide by 2 until quotient becomes 0
+        while q != 0:
+            # append the remainder to the binary, and quotient becomes the dividend for next iter
+            q = num // 2
+            r = num % 2
+            print(q,r)
+            binary.append(r)
+            num = q
+            
+        return binary
+    
 class Memory:
     def __init__(self, rows):
         archsize = validArchSizes
@@ -204,7 +224,6 @@ def main():
     alu = ALU(speed)
     mem = Memory(memsize)
     reg = [0,1,1,0,1,1,1,1,0,1,1,1,0]
-    print(f"The register {reg} converted to decimal is {alu.binToDec(reg)}")
     
 
 if __name__ == '__main__':
