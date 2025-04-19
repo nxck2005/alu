@@ -34,6 +34,7 @@ instructionSet = {
     (0,1,0,0,0,1): "JMP", # jump to a row of instruction
     (0,1,0,0,1,0): "JZ",  # jump to row if ZF = 1
     (0,1,0,0,1,1): "JNZ", # jump to row if ZF = 0
+    (0,1,0,1,0,0): "MOV"  # move immediate value or register value to a register; needs more documentation
 }
 
 class ALU:
