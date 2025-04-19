@@ -1,7 +1,12 @@
 {% extends "index.html" %}
 {% block content %}
-<h4> Registers: (AX, BX, CX) </h4>
+<h2> Registers: (AX, BX, CX) </h2>
 {% for reg in aluObj.REGISTERS %}
-<p> {% for rv in reg %} {{ rv }} {% endfor %}</p>
-{% endfor %} <!-- some bs -->
+<p> {% for bit in reg %} {{ bit }} {% endfor %}</p>
+{% endfor %}
+
+<h2> Memory (40 rows) </h2>
+{% for row in memObj.MEMORY %}
+<p> {% for bit in row %} {{ bit }} {% endfor %} </p>
+{% endfor %}
 {% endblock %}
