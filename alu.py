@@ -31,6 +31,7 @@ instructionSet = {
     (0,0,1,1,1,0): "LLC", # load immediate value to low 2byte to CX
     (0,0,1,1,1,1): "INC", # increment a register
     (0,1,0,0,0,0): "DEC", # decrement a register
+    (0,1,0,0,0,1): "NOP",
 }
 
 class ALU:
@@ -103,6 +104,43 @@ class ALU:
     
     def execute(self):
         pass
+    
+    def binToDec(self, register):
+        
+        decimal = 0
+        
+        # pass an array that assumes a register.
+        # outputs the equivalent decimal number
+        
+        # arrays of values corresponding to place values
+        
+        placevalues = []
+        i = 0
+        while i < len(register):
+            
+            # for each value, index is like the exponent (2^0, 2^1)
+            placevalues.append(2 ** i)
+            i += 1
+            
+        placevalues.reverse()
+        
+        j = 0
+        val = 0
+        while j < len(register):
+            
+            # value of the current place e.g. 2^3 * (1 or 0)
+            val += register[j] * placevalues[j]
+            
+            # add that to total
+            decimal += val
+            
+            # reset buffer
+            val = 0
+            
+            j += 1
+            
+        return decimal
+        
         
 
 class Memory:
@@ -165,7 +203,8 @@ def main():
     
     alu = ALU(speed)
     mem = Memory(memsize)
-
+    reg = [0,1,1,0,1,1,1,1,0,1,1,1,0]
+    print(f"The register {reg} converted to decimal is {alu.binToDec(reg)}")
     
 
 if __name__ == '__main__':
