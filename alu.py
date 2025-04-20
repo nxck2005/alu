@@ -5,7 +5,7 @@
 # 32 bit
 validArchSizes = 32
 
-# instruction set
+# instruction set.
 # some left blank
 
 # 6 bit opcode, rest are needed data as per instruction
@@ -104,7 +104,7 @@ class ALU:
             
     # update opcode length when its decided
     def fetch(self, row):
-        bits = (row[0:4])
+        bits = (row[0:6])
         return bits
     
     def execute(self):
