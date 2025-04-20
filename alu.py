@@ -214,20 +214,9 @@ class Memory:
         for line in self.MEMORY:
             print(f"{i} {line}")
             i += 1
-            
-
+    
 def main():
-    speed = 4
-    memsize = 8 # rows
-    
-    # bits = int(input("Number of bits for ALU: "))
-    # speed = int(input("Speed for ALU in Hz: "))
-    # memsize = int(input("Rows of memory: "))
-    
-    alu = ALU(speed)
-    mem = Memory(memsize)
-    reg = [0,1,1,0,1,1,1,1,0,1,1,1,0]
-    
+    pass
 
 if __name__ == '__main__':
     main()
