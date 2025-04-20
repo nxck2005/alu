@@ -162,7 +162,6 @@ class ALU:
             # append the remainder to the binary, and quotient becomes the dividend for next iter
             q = num // 2
             r = num % 2
-            print(q,r)
             binary.append(r)
             num = q
             
