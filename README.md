@@ -5,7 +5,7 @@ This does compute!
 
 ## Key Features
 
-- 32-bit Architecture
+- 32-bit
 - Three registers (AX, BX, CX)
 - 40-row memory
 - Basic instruction set including:
@@ -13,7 +13,7 @@ This does compute!
   - Logical operations (AND, OR, XOR, NOT)
   - Data movement (LHA, LLA, MOV)
   - Control flow (JMP, JZ, JNZ)
-- Web-based visualization of:
+- Planned visualization for:
   - Register states
   - Memory contents
   - System status
