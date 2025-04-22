@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% block content %}
+<button>EXEC</button>
 <h2> Registers: (AX, BX, CX) </h2>
 {% for reg in aluObj.REGISTERS %}
 <p> {% for bit in reg %} {{ bit }} {% endfor %}</p>
