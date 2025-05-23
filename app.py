@@ -1,10 +1,14 @@
 from flask import Flask, render_template
 from alu import ALU, Memory
+from helpers import Helper
 
 alu = ALU(1)
 mem = Memory(40)
 
 app = Flask(__name__)
+
+# Make helpers available in all templates
+app.jinja_env.globals['helper'] = Helper
 
 @app.route('/')
 def alu_route():
