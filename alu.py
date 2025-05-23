@@ -1,15 +1,13 @@
 # Program to simulate an ALU.
 # ALU takes speed as an argument. Mem takes rows
 # Three registers, one accumulator and two data.
-
 # 32 bit
+
 validArchSizes = 32
 
 # instruction set.
 # some left blank
-
 # 6 bit opcode, rest are needed data as per instruction
-
 # 6 - 10 bits for operands as needed - 16 data bits
 #    register reference or addressing mode
 
