@@ -6,7 +6,7 @@ mem = Memory(40)
 
 app = Flask(__name__)
 
-@app.route('/alu')
+@app.route('/')
 def alu_route():
     print(alu.REGISTERS)
     return render_template("content.html", aluObj=alu, memObj=mem)
