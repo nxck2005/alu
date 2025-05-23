@@ -214,9 +214,7 @@ class Memory:
             i += 1
     
 def main():
-    alu = ALU(4)
-    mem = Memory(5)
-    print(alu.binToHex(alu.hexToBin(0xF1F1)))
+    pass
 
 if __name__ == '__main__':
     main()
