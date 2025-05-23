@@ -12,5 +12,4 @@ app.jinja_env.globals['helper'] = Helper
 
 @app.route('/')
 def alu_route():
-    print(alu.REGISTERS)
     return render_template("content.html", aluObj=alu, memObj=mem)
