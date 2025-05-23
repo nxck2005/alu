@@ -5,13 +5,13 @@
     <div class="registers">
     <h2> Registers: (AX, BX, CX) </h2>
         {% for reg in aluObj.REGISTERS %}
-            <p class="register-row">{% for bit in reg %}{{ bit }}{% endfor %} {{aluObj.binToDec(reg)}}</p>
+            <p class="register-row">{% for bit in reg %}{{ bit }}{% endfor %}    {{aluObj.binToDec(reg)}}</p>
         {% endfor %}
     </div>
     <div class="memory">
     <h2> Memory (40 rows) </h2>
         {% for row in memObj.MEMORY %}
-            <p class="memory-row">{% for bit in row %}{{ bit }}{% endfor %}</p>
+            <p class="memory-row">{% for bit in row %}{{ bit }}{% endfor %}      {{aluObj.binToDec(row)}}</p>
         {% endfor %}
     </div>
 {% endblock %}
