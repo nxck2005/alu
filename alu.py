@@ -150,6 +150,15 @@ class ALU:
             num = q   
         return binary
     
+    def binToHex(self, register):
+        binVal = ""
+        for digit in register:
+            binVal += str(digit)
+        h = hex(int(binVal, 2)) # take the string as a int w base 2
+        return h[2:] # remove 0x prefix
+        
+        
+    
 class Memory:
     def __init__(self, rows):
         archsize = validArchSizes
