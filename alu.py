@@ -28,7 +28,7 @@ instructionSet = {
     (0,0,1,1,0,1): "LHC", # load immediate value to high 2byte of CX
     (0,0,1,1,1,0): "LLC", # load immediate value to low 2byte to CX
     (0,0,1,1,1,1): "INC", # increment a register
-    (0,1,0,0,0,0): "DEC", # decrement a register
+    (0,1,0,0,0,0): "DEC", # decrement a register--
     (0,1,0,0,0,1): "JMP", # jump to a row of instruction
     (0,1,0,0,1,0): "JZ",  # jump to row if ZF = 1
     (0,1,0,0,1,1): "JNZ", # jump to row if ZF = 0

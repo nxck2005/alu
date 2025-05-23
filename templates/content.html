@@ -2,14 +2,18 @@
 {% block content %}
     <button>EXEC</button>
     <h2> Cycles passed: {{ aluObj.cycles }} </h2>
+    <div class="registers">
     <h2> Registers: (AX, BX, CX) </h2>
         {% for reg in aluObj.REGISTERS %}
             <p> {% for bit in reg %}{{ bit }}{% endfor %}</p>
         {% endfor %}
+    </div>
+    <div class="memory">
     <h2> Memory (40 rows) </h2>
         {% for row in memObj.MEMORY %}
             <p> {% for bit in row %}{{ bit }}{% endfor %} </p>
         {% endfor %}
+    </div>
     <h5> 
         WIP @nxck2005
     </h5>
