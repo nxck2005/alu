@@ -12,7 +12,7 @@ This does compute!
   - Arithmetic operations (ADD, SUB, ADC)
   - Logical operations (AND, OR, XOR, NOT)
   - Data movement (LHA, LLA, MOV)
-  - Control flow (JMP, JZ, JNZ)
+  - Control flow
 - Planned web interface for:
   - Register states
   - Memory contents
