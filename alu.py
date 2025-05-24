@@ -69,6 +69,8 @@ class ALU:
         
         print(f"ALU initialized. Architecture: {self.bits} bit.")
         print(f"Running at {self.speed} Hz.")
+        
+        # remove this after alpha
         print("Registers:")
         print(f"AX: {self.REGISTERS[0]}")
         print(f"BX: {self.REGISTERS[1]}")
@@ -142,6 +144,8 @@ class Memory:
             # self.MEMORY.append([0]*archsize)
             self.MEMORY.append(random.randint(0, 2, size=archsize))
         print(f'Memory initialized. {self.rows} lines.')
+        
+        # remove this after alpha
         print("  ", end='')
         print()
         i = 0
