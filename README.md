@@ -3,7 +3,7 @@
 A 32-bit ALU/assembly sim with a web interface for educational purposes.
 This does compute!
 
-## Key Features
+## Key Features (planned)
 
 - 32-bit
 - Three registers (AX, BX, CX)
