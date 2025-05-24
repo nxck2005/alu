@@ -1,6 +1,9 @@
 # Program to simulate an ALU.
 # ALU takes speed as an argument. Mem takes rows
 # Three registers, one accumulator and two data.
+
+from numpy import random
+
 # 32 bit
 
 validArchSizes = 32
@@ -51,7 +54,8 @@ class ALU:
         self.bits = bits
         self.speed = speed
         self.FLAGS = [0,0,0]
-        self.REGISTERS = [[0]*size for size in sizes]
+        # self.REGISTERS = [[0]*size for size in sizes]
+        self.REGISTERS = [random.random(size) for size in sizes]
         self.cycles = 0
         
         print(f"ALU initialized. Architecture: {self.bits} bit.")

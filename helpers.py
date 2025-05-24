@@ -3,7 +3,7 @@ class Helper:
     @staticmethod
     def binToDec(register):        
         decimal = 0       
-        # pass an array that assumes a register.
+        # pass an register that assumes an array.
         # outputs the equivalent decimal number    
         # arrays of values corresponding to place values       
         placevalues = []
