@@ -1,6 +1,8 @@
 {% extends "index.html" %}
 {% block content %}
-    <button>EXEC</button>
+    <form method="POST" action="{{ url_for('execCycle') }}">
+        <button type="submit">EXEC</button>
+    </form>
     <h4> Cycles passed: {{ aluObj.cycles }} </h4>
     <h4> Program counter: {{ aluObj.pc }} </h4>
     <div class="registers">
@@ -10,7 +12,7 @@
         {% endfor %}
     </div>
     <div class="memory">
-    <h4> Memory (40 rows) </h4>
+    <h4> Memory </h4>
         {% for row in memObj.MEMORY %}
             <p class="memory-row">{% for bit in row %}{{ bit }}{% endfor %}        <span class="hexvalue">{{helper.binToHex(row)}}</span></p>    
         {% endfor %}

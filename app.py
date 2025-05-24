@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from alu import ALU, Memory
 from helpers import Helper
 
@@ -13,3 +13,9 @@ app.jinja_env.globals['helper'] = Helper
 @app.route('/')
 def alu_route():
     return render_template("content.html", aluObj=alu, memObj=mem)
+
+@app.route('/execCycle', methods=['POST'])
+def execCycle():
+    alu.execute()
+    return redirect(url_for('alu_route'))
+    

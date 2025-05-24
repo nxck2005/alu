@@ -126,7 +126,9 @@ class ALU:
         return bits
     
     def execute(self):
-        pass
+        self.pc += 1
+        self.cycles += 1
+        return
     
     # DEBUG INSTRUCTION
     # changes a register
