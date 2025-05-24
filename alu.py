@@ -2,6 +2,12 @@
 # ALU takes speed as an argument. Mem takes rows
 # Three registers, one accumulator and two data.
 
+# by @nxck2005
+
+__version__ = "0.0.1.dev"
+__author__ = "nxck2005"
+
+
 from numpy import random
 from helpers import Helper
 from microcode import *
