@@ -3,6 +3,7 @@
 # Three registers, one accumulator and two data.
 
 from numpy import random
+from helpers import Helper
 
 # 32 bit
 
@@ -72,6 +73,16 @@ class ALU:
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
         
+    def status(self):
+        print(f"Architecture size: {self.bits}bit")
+        print(f"Clock speed: {self.speed} Hz")
+        print(f"Registers status after {self.cycles} cycles:")
+        print(f"AX: {self.REGISTERS[0]}")
+        print(f"BX: {self.REGISTERS[1]}")
+        print(f"CX: {self.REGISTERS[2]}")
+        
+    # Functions after here are incomplete and need work. Don't use
+        
     def runCycle(self, memory, row=0):
         
         # pipeline
@@ -87,14 +98,6 @@ class ALU:
         
         
         return
-
-    def status(self):
-        print(f"Architecture size: {self.bits}bit")
-        print(f"Clock speed: {self.speed} Hz")
-        print(f"Registers status after {self.cycles} cycles:")
-        print(f"AX: {self.REGISTERS[0]}")
-        print(f"BX: {self.REGISTERS[1]}")
-        print(f"CX: {self.REGISTERS[2]}")
         
     def decode(self, opcode):
         opcode = tuple(opcode)
@@ -112,6 +115,13 @@ class ALU:
     
     def execute(self):
         pass
+    
+    # DEBUG INSTRUCTION
+    # changes a register
+    # TODO
+    def poke():
+        pass
+    
         
     
 class Memory:
