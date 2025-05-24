@@ -2,10 +2,21 @@
     color: green;
     margin-top: 0;
     margin-bottom: 0;
+    font-family: monospace;
 }
 
 .register-row {
     color: blue;
     margin-top: 0;
     margin-bottom: 0;
+    font-family: monospace;
+}
+
+.hexvalue {
+    color: purple;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: monospace;
 }

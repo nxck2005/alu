@@ -40,22 +40,23 @@ instructionSet = {
     (0,1,0,1,1,0): "RCL", # rotate contents of register left
 }
 
-class ALU:
-    # Flags: ZF, CF, OF
-    FLAGS = [0, 0, 0]
-        
+class ALU:     
     def __init__(self, speed: int = 4):
         
         bits = validArchSizes
         
         # for genning registers
         sizes = [bits, bits, bits]
-        
+        self.REGISTERS = [0,1,2]
         self.bits = bits
         self.speed = speed
         self.FLAGS = [0,0,0]
-        # self.REGISTERS = [[0]*size for size in sizes]
-        self.REGISTERS = [random.random(size) for size in sizes]
+        self.REGISTERS = [[0]*size for size in sizes]
+        # For random generation, uncomment the next declaration and loop,
+        # and comment the one before.
+        # i = 0
+        # for i in range(len(sizes)):
+        #     self.REGISTERS[i] = random.randint(0, 2, size=bits)
         self.cycles = 0
         
         print(f"ALU initialized. Architecture: {self.bits} bit.")
@@ -120,7 +121,9 @@ class Memory:
         self.archsize = archsize
         self.MEMORY = []
         for _ in range(self.rows):
-            self.MEMORY.append([0]*archsize)
+            # For only zeros, uncomment the next line, and comment the next.
+            # self.MEMORY.append([0]*archsize)
+            self.MEMORY.append(random.randint(0, 2, size=archsize))
         print(f'Memory initialized. {self.rows} lines.')
         print("  ", end='')
         print()

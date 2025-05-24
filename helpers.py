@@ -26,7 +26,7 @@ class Helper:
         return decimal
     
     @staticmethod    
-    def decToBin(self, number):       
+    def decToBin(number):       
         # uses division by 2
         num = number   
         binary = []   
@@ -43,15 +43,15 @@ class Helper:
         return binary
     
     @staticmethod
-    def binToHex(self, register):
+    def binToHex(r):
         binVal = ""
-        for digit in register:
+        for digit in r:
             binVal += str(digit)
         h = hex(int(binVal, 2)) # take the string as a int w base 2
         return h  
     
     @staticmethod
-    def hexToBin(self, hexval):
+    def hexToBin(hexval):
         binval = bin(hexval)
         reg = []
         for digit in binval[2:]:
