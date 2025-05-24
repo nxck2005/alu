@@ -26,3 +26,6 @@ def NOT():
 
 def OR():
     pass
+
+def XOR():
+    pass
