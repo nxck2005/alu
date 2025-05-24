@@ -9,12 +9,12 @@ def NOP():
 def ADD(reg1: list, reg2: list) -> list:
     pass
 
-def SUB():
+def SUB(reg1: list, reg2: list) -> list:
     pass
 
-def ADC():
+def ADC(reg1: list, reg2: list) -> list:
     pass
 
-def SBB():
+def SBB(reg1: list, reg2: list) -> list:
     pass
     
