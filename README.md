@@ -9,9 +9,9 @@ This does compute!
 - Support for 3 CPU registers for operations
 - Memory and program counter to store programs and data (unified)
 - Basic instruction set including:
-  - Arithmetic operations (ADD, SUB, ADC)
-  - Logical operations (AND, OR, XOR, NOT)
-  - Data movement (LHA, LLA, MOV)
+  - Arithmetic operations
+  - Logical operations
+  - Data movement
   - Control flow
 - Planned web interface for:
   - Register states
