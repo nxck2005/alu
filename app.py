@@ -3,7 +3,7 @@ from alu import ALU, Memory
 from helpers import Helper
 
 alu = ALU(1)
-mem = Memory(40)
+mem = Memory(20)
 
 app = Flask(__name__)
 
@@ -16,6 +16,6 @@ def alu_route():
 
 @app.route('/execCycle', methods=['POST'])
 def execCycle():
-    alu.execute()
+    alu.execute(mem)
     return redirect(url_for('alu_route'))
     

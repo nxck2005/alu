@@ -125,8 +125,10 @@ class ALU:
         bits = (row[0:6])
         return bits
     
-    def execute(self):
+    def execute(self, memory):
         self.pc += 1
+        if self.pc >= len(memory.MEMORY):
+            self.pc = 0
         self.cycles += 1
         return
     
