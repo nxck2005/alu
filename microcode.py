@@ -18,3 +18,11 @@ def ADC(reg1: list, reg2: list) -> list:
 def SBB(reg1: list, reg2: list) -> list:
     pass
     
+def AND():
+    pass
+
+def NOT():
+    pass
+
+def OR():
+    pass
