@@ -8,11 +8,7 @@ This does compute!
 - 32-bit
 - Support for 3 CPU registers for operations
 - Memory and program counter to store programs and data (unified)
-- Basic instruction set including:
-  - Arithmetic operations
-  - Logical operations
-  - Data movement
-  - Control flow
+- Basic instruction set (arithmetic, logical, data movement, control flow)
 - Planned web interface for:
   - Register states
   - Memory contents
