@@ -13,6 +13,7 @@ This does compute!
 
 ## Short term todo
 - add poke function for debug
-- add program counter
+- add program counter DONE
 - add buttons to page for extra func
-- make the button POST
+- make the button POST DONE
+- log changes to console, and maybe to a file
