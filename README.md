@@ -13,7 +13,7 @@ This does compute!
   - Logical operations (AND, OR, XOR, NOT)
   - Data movement (LHA, LLA, MOV)
   - Control flow (JMP, JZ, JNZ)
-- Planned visualization for:
+- Planned web interface for:
   - Register states
   - Memory contents
   - System status
