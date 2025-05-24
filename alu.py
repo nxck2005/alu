@@ -67,6 +67,9 @@ class ALU:
         #     self.REGISTERS[i] = random.randint(0, 2, size=bits)
         self.cycles = 0
         
+        # program counter
+        self.pc = 0
+        
         print(f"ALU initialized. Architecture: {self.bits} bit.")
         print(f"Running at {self.speed} Hz.")
         

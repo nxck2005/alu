@@ -2,6 +2,7 @@
 {% block content %}
     <button>EXEC</button>
     <h4> Cycles passed: {{ aluObj.cycles }} </h4>
+    <h4> Program counter: {{ aluObj.pc }} </h4>
     <div class="registers">
     <h4> Registers: (AX, BX, CX) </h4>
         {% for reg in aluObj.REGISTERS %}
