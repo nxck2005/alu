@@ -4,6 +4,7 @@
 
 from numpy import random
 from helpers import Helper
+from microcode import *
 
 # 32 bit
 
