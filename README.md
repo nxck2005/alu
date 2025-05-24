@@ -6,7 +6,7 @@ This does compute!
 ## Key Features (planned)
 
 - 32-bit
-- Three registers (AX, BX, CX)
+- Support for 3 CPU registers for operations
 - 40-row memory
 - Basic instruction set including:
   - Arithmetic operations (ADD, SUB, ADC)
