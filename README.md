@@ -9,7 +9,4 @@ This does compute!
 - Support for 3 CPU registers for operations
 - Memory and program counter to store programs and data (unified)
 - Basic instruction set (arithmetic, logical, data movement, control flow)
-- Planned web interface for:
-  - Register states
-  - Memory contents
-  - System status
+- Planned web interface (flask)
