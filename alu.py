@@ -19,7 +19,6 @@ validArchSizes = 32
 
 class ALU:     
     def __init__(self, speed: int = 4):
-        
         bits = validArchSizes
         
         # for genning registers
@@ -75,9 +74,14 @@ class ALU:
         reg = array(Helper.hexToBin(val))
         if len(reg) != 32:
             print("Poke failed. Invalid length")
-        i = 0
+            return
+        old = self.REGISTERS[rNo]
         self.REGISTERS[rNo] = copy(reg)
-        pass
+        print("Poked ALU! This is a debug function and can be deprecated.")
+        print(f"Old: {old}")
+        print(f"New: {reg}")
+        print(f"On register {rNo}")
+        return
         
         
     # Functions after here are incomplete and need work. Don't use

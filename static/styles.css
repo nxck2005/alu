@@ -21,3 +21,12 @@
     font-family: monospace;
     padding-left: 20px;
 }
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.smalltitle {
+    margin-bottom: 2px;
+}

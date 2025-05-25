@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, flash
 from alu import ALU, Memory
 from helpers import Helper
 
@@ -6,6 +6,7 @@ alu = ALU(1)
 mem = Memory(20)
 
 app = Flask(__name__)
+app.secret_key = 'zombisdopeashell'
 
 # make helpers class available in all templates
 # call using helper.x
@@ -22,6 +23,18 @@ def execCycle():
 
 @app.route('/pokeALU', methods=['POST'])
 def pokeALU():
-    regno = request.form.get()
-    pass
+    regno = request.form.get("regno")
+    val = request.form.get("pokeval")
+    print(f"RNO Recieved: {regno}")
+    print(f"Val recieved: {val}")
+
+    
+    regno = int(regno)
+    val = int(val, 16)
+    
+    if val > 0xFFFFFFFF:
+        flash("Value too big!", "success")
+    
+    alu.poke(val, regno)
+    return redirect(url_for('alu_route'))
     
