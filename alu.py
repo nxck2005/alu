@@ -137,6 +137,8 @@ class ALU:
     # TODO
     def poke(self, val, rNo):
         reg = array(Helper.hexToBin(val))
+        if len(reg) != 32:
+            print("Poke failed. Invalid length")
         i = 0
         self.REGISTERS[rNo] = copy(reg)
         pass
