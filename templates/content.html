@@ -44,8 +44,9 @@
 
     <div class="memory">
     <h4> Memory </h4>
+        <!-- loop index is to print the index of the row -->
         {% for row in memObj.MEMORY %}
-            <p class="memory-row">{% for bit in row %}{{ bit }}{% endfor %}        <span class="hexvalue">{{helper.binToHex(row)}}</span></p>    
+            <p class="memory-row"><span class="memory-index">{{ loop.index0 }}:</span> {% for bit in row %}{{ bit }}{% endfor %}        <span class="hexvalue">{{helper.binToHex(row)}}</span></p>    
         {% endfor %}
     </div>
 {% endblock %}

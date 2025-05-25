@@ -30,3 +30,11 @@
 .smalltitle {
     margin-bottom: 2px;
 }
+
+/* using this class mainly for the width property. the row index should be a constant distance from
+   the row. hence, width property */
+.memory-index {
+    display: inline-block;
+    width: 3ch;
+    text-align: right;
+}
