@@ -21,6 +21,16 @@
             <button type="submit">Poke ALU</button>
         </div>
     </form>
+    <form method="POST" action="{{ url_for('pokeMem')}}">
+        <div>
+            <h4 class="smalltitle"> Poke Memory (debug) </h4>
+            <input type="text" name="rowno" id="rowno" placeholder="Row number to poke">
+            <input type="text" name="rowval" id="rowval" placeholder="Hex value to poke in">
+        </div>
+        <div class="wrapper">
+            <button type="submit">Poke Memory</button>
+        </div>
+    </form>
 
     <h4> Cycles passed: {{ aluObj.cycles }} </h4>
     <h4> Program counter: {{ aluObj.pc }} </h4>

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from alu import ALU, Memory
+from alu import ALU, Memory, maxValue, minValue
 from helpers import Helper
 
 alu = ALU(1)
@@ -32,9 +32,27 @@ def pokeALU():
     regno = int(regno)
     val = int(val, 16)
     
-    if val > 0xFFFFFFFF:
+    # fallback error check
+    if val > maxValue or val < minValue:
         flash("Value too big!", "success")
     
     alu.poke(val, regno)
     return redirect(url_for('alu_route'))
+
+@app.route('/pokeMem', methods=['POST'])
+def pokeMem():
+    rowno = request.form.get("rowno")
+    val = request.form.get("rowval")
     
+    print(f"Row number recieved: {rowno}")
+    print(f"Val recieved: {val}")
+    
+    rowno = int(rowno)
+    val = int(val, 16)
+   
+    # fallback error check
+    if val > maxValue or val < minValue:
+        flash("Value too big!", "success")
+        
+    mem.poke(rowno, val)
+    return redirect(url_for('alu_route'))

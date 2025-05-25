@@ -1,6 +1,7 @@
 # Program to simulate an ALU.
 # ALU takes speed as an argument. Mem takes rows
 # Three registers, one accumulator and two data.
+# The three registers are hardcoded for now. If changed, change all references.
 
 # by @nxck2005
 
@@ -15,6 +16,8 @@ from microcode import *
 # 32 bit
 
 validArchSizes = 32
+maxValue = 0xFFFFFFFF
+minValue = 0x00000000
 
 
 class ALU:     
@@ -72,8 +75,11 @@ class ALU:
     # Remove after beta
     def poke(self, val, rNo):
         reg = array(Helper.hexToBin(val))
-        if len(reg) != 32:
+        if val > maxValue or val < minValue:
             print("Poke failed. Invalid length")
+            return
+        if rNo not in (0,1,2):
+            print("Poke failed. Invalid register reference.")
             return
         old = self.REGISTERS[rNo]
         self.REGISTERS[rNo] = copy(reg)
@@ -181,8 +187,21 @@ class Memory:
     # DEBUG INSTRUCTION
     # Changes a memory row
     # TODO
-    def poke(self, row, value):
-        pass
+    def poke(self, rowNo, value):
+        row = array(Helper.hexToBin(value))
+        if value > maxValue or value < minValue:
+            print("Poke failed. Invalid length")
+            return
+        if not 0 <= rowNo <= len(self.MEMORY):
+            print("Poke failed. Invalid memory reference")
+            return
+        old = self.MEMORY[rowNo]
+        self.MEMORY[rowNo] = copy(row)
+        print("Poked memory! This is a debug function and can be deprecated.")
+        print(f"Old: {old}")
+        print(f"New: {self.MEMORY[rowNo]}")
+        print(f"On row number {rowNo}")
+        return
     
     
     
