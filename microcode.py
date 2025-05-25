@@ -37,6 +37,7 @@ instructionSet = {
 
 
 # implement all instructions here
+
 def NOP():
     pass
 

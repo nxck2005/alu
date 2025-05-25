@@ -16,7 +16,6 @@ from microcode import *
 
 validArchSizes = 32
 
-# instruction set.
 
 class ALU:     
     def __init__(self, speed: int = 4):
@@ -25,16 +24,21 @@ class ALU:
         
         # for genning registers
         sizes = [bits, bits, bits]
+        
         self.REGISTERS = [0,1,2]
         self.bits = bits
         self.speed = speed
         self.FLAGS = [0,0,0]
+        
         self.REGISTERS = [[0]*size for size in sizes]
+        
         # For random generation, uncomment the next declaration and loop,
         # and comment the one before.
         # i = 0
         # for i in range(len(sizes)):
         #     self.REGISTERS[i] = random.randint(0, 2, size=bits)
+        
+        # cycles passed
         self.cycles = 0
         
         # program counter
@@ -62,6 +66,19 @@ class ALU:
         print(f"AX: {self.REGISTERS[0]}")
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
+        
+    
+    # DEBUG INSTRUCTION
+    # changes a register
+    # TODO
+    def poke(self, val, rNo):
+        reg = array(Helper.hexToBin(val))
+        if len(reg) != 32:
+            print("Poke failed. Invalid length")
+        i = 0
+        self.REGISTERS[rNo] = copy(reg)
+        pass
+        
         
     # Functions after here are incomplete and need work. Don't use
         
@@ -101,17 +118,6 @@ class ALU:
             self.pc = 0
         self.cycles += 1
         return
-    
-    # DEBUG INSTRUCTION
-    # changes a register
-    # TODO
-    def poke(self, val, rNo):
-        reg = array(Helper.hexToBin(val))
-        if len(reg) != 32:
-            print("Poke failed. Invalid length")
-        i = 0
-        self.REGISTERS[rNo] = copy(reg)
-        pass
     
         
     
