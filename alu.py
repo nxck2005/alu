@@ -178,6 +178,14 @@ class Memory:
             print(f"{i} {line}")
             i += 1
     
+    # DEBUG INSTRUCTION
+    # Changes a memory row
+    # TODO
+    def poke(self, row, value):
+        pass
+    
+    
+    
 def main():
     print(Helper.hexToBin(0xFF))
 
