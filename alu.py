@@ -195,7 +195,7 @@ class Memory:
             i += 1
     
 def main():
-    Helper.hexToBin(0xFF)
+    print(Helper.hexToBin(0xFF))
 
 if __name__ == '__main__':
     main()
