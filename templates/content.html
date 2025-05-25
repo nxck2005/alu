@@ -6,6 +6,12 @@
         <button type="submit">EXEC</button>
     </form>
 
+    <form method="POST" action="{{ url_for('pokeALU') }}">
+        <div>
+            <!---->
+        </div>
+    </form>
+
     <h4> Cycles passed: {{ aluObj.cycles }} </h4>
     <h4> Program counter: {{ aluObj.pc }} </h4>
 

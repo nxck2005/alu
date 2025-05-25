@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from alu import ALU, Memory
 from helpers import Helper
 
@@ -7,7 +7,8 @@ mem = Memory(20)
 
 app = Flask(__name__)
 
-# Make helpers available in all templates
+# make helpers class available in all templates
+# call using helper.x
 app.jinja_env.globals['helper'] = Helper
 
 @app.route('/')
@@ -18,4 +19,9 @@ def alu_route():
 def execCycle():
     alu.execute(mem)
     return redirect(url_for('alu_route'))
+
+@app.route('/pokeALU', methods=['POST'])
+def pokeALU():
+    regno = request.form.get()
+    pass
     
