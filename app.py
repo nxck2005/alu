@@ -6,7 +6,7 @@ alu = ALU(1)
 mem = Memory(20)
 
 app = Flask(__name__)
-app.secret_key = 'zombisdopeashell'
+app.secret_key = 'IHateLilly69420'
 
 # make helpers class available in all templates
 # call using helper.x
