@@ -135,7 +135,8 @@ class ALU:
     # DEBUG INSTRUCTION
     # changes a register
     # TODO
-    def poke():
+    def poke(self, val):
+        reg = Helper.hexToBin(val)
         pass
     
         
@@ -194,7 +195,7 @@ class Memory:
             i += 1
     
 def main():
-    pass
+    Helper.hexToBin(0xFF)
 
 if __name__ == '__main__':
     main()
