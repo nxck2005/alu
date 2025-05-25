@@ -17,10 +17,6 @@ from microcode import *
 validArchSizes = 32
 
 # instruction set.
-# some left blank
-# 6 bit opcode, rest are needed data as per instruction
-# 6 - 10 bits for operands as needed - 16 data bits
-#    register reference or addressing mode
 
 class ALU:     
     def __init__(self, speed: int = 4):

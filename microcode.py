@@ -2,7 +2,11 @@ from helpers import Helper
 import typing
 from numpy import *
 
-
+# instruction set.
+# some left blank
+# 6 bit opcode, rest are needed data as per instruction
+# 6 - 10 bits for operands as needed - 16 data bits
+#    register reference or addressing mode
 
 instructionSet = {
     (0,0,0,0,0,0): "NOP", # no operation
@@ -32,7 +36,7 @@ instructionSet = {
 
 
 
-# All instructions here
+# implement all instructions here
 def NOP():
     pass
 
