@@ -69,7 +69,7 @@ class ALU:
     
     # DEBUG INSTRUCTION
     # changes a register
-    # TODO
+    # Remove after beta
     def poke(self, val, rNo):
         reg = array(Helper.hexToBin(val))
         if len(reg) != 32:
