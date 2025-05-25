@@ -4,7 +4,7 @@
 
 # by @nxck2005
 
-__version__ = "0.0.2.dev"
+__version__ = "0.0.3.dev"
 __author__ = "nxck2005"
 
 
