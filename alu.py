@@ -8,7 +8,7 @@ __version__ = "0.0.2.dev"
 __author__ = "nxck2005"
 
 
-from numpy import random
+from numpy import random, array, copy
 from helpers import Helper
 from microcode import *
 
@@ -135,8 +135,10 @@ class ALU:
     # DEBUG INSTRUCTION
     # changes a register
     # TODO
-    def poke(self, val):
-        reg = Helper.hexToBin(val)
+    def poke(self, val, rNo):
+        reg = array(Helper.hexToBin(val))
+        i = 0
+        self.REGISTERS[rNo] = copy(reg)
         pass
     
         
