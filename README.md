@@ -11,6 +11,14 @@ This does compute!
 - Basic instruction set (arithmetic, logical, data movement, control flow)
 - Planned web interface (flask)
 
+## To run:
+```bash
+git clone https://github.com/nxck2005/alu.git
+cd alu
+pip install -r requirements.txt
+flask --app app run
+```
+s
 ## Short term todo
 - add poke function for debug DONE
 - add program counter DONE
