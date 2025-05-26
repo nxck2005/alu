@@ -23,31 +23,6 @@ class Memory:
             print(f"{i} {line}")
             i += 1
             
-    def editIndex(self, row, index, new):
-        if new in (0,1) and row <= self.rows and index <= self.archsize:
-            self.MEMORY[row][index] = new
-        else:
-            print("Must be 0 or 1. Not modified.")
-        return
-    
-    def editRow(self, row, newrow):
-        if len(newrow) != self.archsize:
-            print("Length of new row must be equal to the already existing architecture size. Not modified.")
-            print(f"Archsize: {self.archsize}")
-            return   
-        for x in newrow:
-            if x not in (0,1):
-                print('Every value in new row must be 0 or 1. Not modified.')
-                return
-        self.MEMORY[row] = newrow.copy()
-    
-    def memory(self):
-        print("  ", end='')
-        i = 0
-        for line in self.MEMORY:
-            print(f"{i} {line}")
-            i += 1
-            
     def status(self):
         print(f"Memory size: {self.rows} rows, Total: {(self.rows * self.archsize / 8):.2f} B")
         print("  ", end='')
