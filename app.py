@@ -30,6 +30,11 @@ app.jinja_env.globals['helper'] = Helper
 def alu_route():
     return render_template("content.html", aluObj=alu, memObj=mem)
 
+@app.route("/resetALU", methods=['POST'])
+def resetALU():
+    alu.reset()
+    return redirect(url_for('alu_route'))
+
 @app.route('/execCycle', methods=['POST'])
 def execCycle():
     alu.execute(mem)

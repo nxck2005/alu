@@ -72,6 +72,10 @@ class ALU:
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
         
+    # i know, i know, wrapper function but it feels more readable to me
+    def reset(self):
+        self.__init__()
+        return
     
     # DEBUG INSTRUCTION
     # changes a register
