@@ -16,6 +16,9 @@ from microcode import *
 # 32 bit
 
 validArchSizes = 32
+
+# values to enforce overflow/underflow
+# python just adds a bit/digit/hex blabla
 maxValue = 0xFFFFFFFF
 minValue = 0x00000000
 
