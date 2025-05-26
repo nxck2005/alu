@@ -3,12 +3,21 @@ from alu import ALU, Memory, maxValue, minValue
 from helpers import Helper
 from microcode import instructionSet
 import json
+import os
 
 alu = ALU(1)
 mem = Memory(20)
 
-insJson = json.dumps(instructionSet)
-print(insJson)
+insJson = json.dumps(instructionSet, indent=2)
+print("Instruction set:", insJson)
+
+try:
+    with open("instructionSet.json", "w") as f:
+        f.write(insJson)
+except:
+    f = open("instructionSet.json", "x")
+    f.write(insJson)
+    f.close()
 
 app = Flask(__name__)
 app.secret_key = 'IHateLilly69420'
