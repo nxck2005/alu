@@ -32,6 +32,15 @@
         </div>
     </form>
 
+    <div class="reset-div">
+        <form method="POST" action="{{ url_for('resetALU') }}">
+            <button type="submit">RESET ALU</button>
+        </form>
+        <form method="POST" action="{{ url_for('resetMem') }}">
+            <button type="submit">RESET MEM</button>
+        </form>
+    </div>
+
     <h4> Cycles passed: {{ aluObj.cycles }} </h4>
     <h4> Program counter: {{ aluObj.pc }} </h4>
 

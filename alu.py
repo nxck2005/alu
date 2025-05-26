@@ -72,7 +72,7 @@ class ALU:
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
     
-    # DEBUG INSTRUCTION
+    # DEBUG INSTRUCTIONS
     # changes a register
     # Remove after beta
     def poke(self, val, rNo):
@@ -139,7 +139,7 @@ class ALU:
         
     
 class Memory:
-    def __init__(self, rows):
+    def __init__(self, rows: int = 20):
         archsize = validArchSizes
         self.rows = rows
         self.archsize = archsize
@@ -190,13 +190,8 @@ class Memory:
         for line in self.MEMORY:
             print(f"{i} {line}")
             i += 1
-            
-    # wrapper function but it feels more readable to me
-    def reset(self):
-        self.__init__()
-        return
     
-    # DEBUG INSTRUCTION
+    # DEBUG INSTRUCTIONS
     # Changes a memory row
     # TODO
     def poke(self, rowNo, value):
@@ -213,6 +208,11 @@ class Memory:
         print(f"Old: {old}")
         print(f"New: {self.MEMORY[rowNo]}")
         print(f"On row number {rowNo}")
+        return
+    
+    # wrapper function but it feels more readable to me
+    def reset(self):
+        self.__init__()
         return
     
     
