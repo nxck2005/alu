@@ -1,9 +1,14 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 from alu import ALU, Memory, maxValue, minValue
 from helpers import Helper
+from microcode import instructionSet
+import json
 
 alu = ALU(1)
 mem = Memory(20)
+
+insJson = json.dumps(instructionSet)
+print(insJson)
 
 app = Flask(__name__)
 app.secret_key = 'IHateLilly69420'
