@@ -8,7 +8,7 @@ import os
 alu = ALU(1)
 mem = Memory(20)
 
-insJson = json.dumps(instructionSet, indent=2)
+insJson = json.dumps(instructionSet, indent=4)
 print("Instruction set:", insJson)
 
 try:
