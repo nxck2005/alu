@@ -71,11 +71,6 @@ class ALU:
         print(f"AX: {self.REGISTERS[0]}")
         print(f"BX: {self.REGISTERS[1]}")
         print(f"CX: {self.REGISTERS[2]}")
-        
-    # i know, i know, wrapper function but it feels more readable to me
-    def reset(self):
-        self.__init__()
-        return
     
     # DEBUG INSTRUCTION
     # changes a register
@@ -94,6 +89,11 @@ class ALU:
         print(f"Old: {old}")
         print(f"New: {reg}")
         print(f"On register {rNo}")
+        return
+    
+    # i know, i know, wrapper function but it feels more readable to me
+    def reset(self):
+        self.__init__()
         return
         
         
@@ -190,6 +190,11 @@ class Memory:
         for line in self.MEMORY:
             print(f"{i} {line}")
             i += 1
+            
+    # wrapper function but it feels more readable to me
+    def reset(self):
+        self.__init__()
+        return
     
     # DEBUG INSTRUCTION
     # Changes a memory row
