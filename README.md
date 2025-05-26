@@ -18,7 +18,7 @@ cd alu
 pip install -r requirements.txt
 flask --app app run
 ```
-s
+
 ## Short term todo
 - add poke function for debug DONE
 - add program counter DONE
