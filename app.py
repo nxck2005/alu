@@ -1,7 +1,9 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from alu import ALU, Memory, maxValue, minValue
+from alu import ALU
+from memory import Memory
 from helpers import Helper
 from microcode import instructionSet
+from constants import maxValue, minValue
 import json
 import os
 

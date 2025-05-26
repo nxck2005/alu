@@ -1,5 +1,4 @@
 class Helper:   
-    
     @staticmethod
     def binToDec(register):        
         decimal = 0       
