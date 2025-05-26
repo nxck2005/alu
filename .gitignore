@@ -3,3 +3,4 @@ __pycache__/
 oldOrGUI/
 unittest.py
 redundant.py
+*.log
