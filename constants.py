@@ -5,7 +5,7 @@
 
 # by @nxck2005
 
-__version__ = "0.0.3.dev"
+__version__ = "0.0.4.dev"
 __author__ = "nxck2005"
 
 # 32 bit
