@@ -6,12 +6,14 @@ from microcode import instructionSet
 from constants import maxValue, minValue
 import json
 
-alu = ALU(1)
+alu = ALU()
 mem = Memory(20)
 
+# dump instruction set as a variable w json
 insJson = json.dumps(instructionSet, indent=4)
 print("Instruction set:", insJson)
 
+# write that json to file
 try:
     with open("instructionSet.json", "w") as f:
         f.write(insJson)
