@@ -2,6 +2,10 @@ from numpy import random, array, copy
 from helpers import Helper
 from microcode import *
 from constants import validArchSizes, maxValue, minValue
+import logging
+
+# get namespaced logger
+aluLogger = logging.getLogger(__name__)
 
 class ALU:     
     def __init__(self):
@@ -9,6 +13,7 @@ class ALU:
         
         # for genning registers
         sizes = [bits, bits, bits]
+        aluLogger.debug("")
         
         self.REGISTERS = [0,1,2]
         self.bits = bits
