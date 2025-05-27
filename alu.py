@@ -4,7 +4,7 @@ from microcode import *
 from constants import validArchSizes, maxValue, minValue
 
 class ALU:     
-    def __init__(self, speed: int = 4):
+    def __init__(self):
         bits = validArchSizes
         
         # for genning registers
@@ -12,7 +12,6 @@ class ALU:
         
         self.REGISTERS = [0,1,2]
         self.bits = bits
-        self.speed = speed
         self.FLAGS = [0,0,0]
         
         self.REGISTERS = [[0]*size for size in sizes]
@@ -30,7 +29,6 @@ class ALU:
         self.pc = 0
         
         print(f"ALU initialized. Architecture: {self.bits} bit.")
-        print(f"Running at {self.speed} Hz.")
         
         # remove this after alpha
         print("Registers:")
@@ -46,7 +44,6 @@ class ALU:
         
     def status(self):
         print(f"Architecture size: {self.bits}bit")
-        print(f"Clock speed: {self.speed} Hz")
         print(f"Registers status after {self.cycles} cycles:")
         print(f"AX: {self.REGISTERS[0]}")
         print(f"BX: {self.REGISTERS[1]}")
