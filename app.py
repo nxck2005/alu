@@ -5,7 +5,6 @@ from helpers import Helper
 from microcode import instructionSet
 from constants import maxValue, minValue
 import json
-import os
 
 alu = ALU(1)
 mem = Memory(20)
