@@ -4,3 +4,4 @@ oldOrGUI/
 unittest.py
 redundant.py
 *.log
+logs/
