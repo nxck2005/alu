@@ -98,7 +98,7 @@ class ALU:
             if instructionSet[opcode]:
                 return instructionSet[opcode]
         except:
-            print("Opcode couldn't be decoded. DECODE returned NOP")
+            print("That appears untrue. DECODE returned NOP")
             return "NOP"
             
     # update opcode length when its decided
