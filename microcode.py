@@ -17,12 +17,12 @@ instructionSet = {
     "000110": "NOT", # logical NOT on the value provided, store in AX
     "000111": "OR",  # logical OR between value provided and AX, store result in AX
     "001000": "XOR", # logical XOR between value provided
-    "001001": "LHA", # load immediate value to high 2byte of AX
-    "001010": "LLA", # load immediate value to low 2byte of AX
-    "001011": "LHB", # load immediate value to high 2byte of BX
-    "001100": "LLB", # load immediate value to low 2byte of BX
-    "001101": "LHC", # load immediate value to high 2byte of CX
-    "001110": "LLC", # load immediate value to low 2byte to CX
+    "001001": "LHA", # load immediate value to high halfword of AX
+    "001010": "LLA", # load immediate value to low halfword of AX
+    "001011": "LHB", # load immediate value to high halfword of BX
+    "001100": "LLB", # load immediate value to low halfword of BX
+    "001101": "LHC", # load immediate value to high halfword of CX
+    "001110": "LLC", # load immediate value to low halfword to CX
     "001111": "INC", # increment a register
     "010000": "DEC", # decrement a register
     "010001": "JMP", # jump to a row of instruction
