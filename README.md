@@ -1,6 +1,6 @@
 # ALUSim
 
-A 32-bit ALU/assembly sim with a web interface for educational purposes.
+A ALU/assembly sim with a web interface for educational purposes.
 This does compute!
 
 ## Key Features (planned)
