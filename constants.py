@@ -8,7 +8,7 @@
 __version__ = "0.0.5.dev"
 __author__ = "nxck2005"
 
-# 32 bit
+# 32 bit word size
 validArchSizes = 32
 
 # values to enforce overflow/underflow
