@@ -19,7 +19,4 @@ def loggingConfigure():
         filename=f"logs/alu_{dtfmt}.log",
         
     )
-    
-    
-    
     return

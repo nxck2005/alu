@@ -78,39 +78,6 @@ class ALU:
         self.__init__()
         return
         
-        
-    # Functions after here are incomplete and need work. Don't use
-        
-    def runCycle(self, memory, row=0):
-        
-        # pipeline
-        # for execution:
-        # fetch the row of instruction from memory
-        # decode what to do, first half is opcode, second is data
-        # execute, copy result to AX if arithmetic is done
-        # one clock cycle passes after appropriate time.
-        
-        # FETCH
-        
-        opcode = self.fetch(memory.MEMORY[row])
-        
-        
-        return
-        
-    def decode(self, opcode):
-        opcode = tuple(opcode)
-        try:
-            if instructionSet[opcode]:
-                return instructionSet[opcode]
-        except:
-            print("That appears untrue. DECODE returned NOP")
-            return "NOP"
-            
-    # update opcode length when its decided
-    def fetch(self, row):
-        bits = (row[0:6])
-        return bits
-    
     def execute(self, memory):
         self.pc += 1
         if self.pc >= len(memory.MEMORY):
