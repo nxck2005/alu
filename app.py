@@ -3,7 +3,7 @@ from alu import ALU
 from memory import Memory
 from helpers import Helper
 from microcode import instructionSet
-from constants import maxValue, minValue
+from constants import maxValue, minValue, __version__, __author__
 import json
 
 alu = ALU()
@@ -31,7 +31,7 @@ app.jinja_env.globals['helper'] = Helper
 
 @app.route('/')
 def alu_route():
-    return render_template("content.html", aluObj=alu, memObj=mem)
+    return render_template("content.html", aluObj=alu, memObj=mem, version=__version__, author=__author__)
 
 @app.route("/resetALU", methods=['POST'])
 def resetALU():
