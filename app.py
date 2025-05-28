@@ -7,7 +7,7 @@ from constants import maxValue, minValue
 import json
 
 alu = ALU()
-mem = Memory(20)
+mem = Memory(40)
 
 # dump instruction set as a variable w json
 insJson = json.dumps(instructionSet, indent=4)
