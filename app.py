@@ -54,9 +54,10 @@ def pokeALU():
     val = request.form.get("pokeval")
     print(f"RNO Recieved: {regno}")
     print(f"Val recieved: {val}")
-
     
     regno = int(regno)
+    
+    # cast val into an int w base 16; hence hex value
     val = int(val, 16)
     
     # fallback error check
@@ -75,6 +76,8 @@ def pokeMem():
     print(f"Val recieved: {val}")
     
     rowno = int(rowno)
+    
+    # cast val into an int w base 16; hence hex value
     val = int(val, 16)
    
     # fallback error check
