@@ -83,3 +83,7 @@ def pokeMem():
         
     mem.poke(rowno, val)
     return redirect(url_for('alu_route'))
+
+@app.route('/exec', methods=['POST'])
+def exec():
+    pass
