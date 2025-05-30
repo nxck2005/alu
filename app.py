@@ -9,53 +9,62 @@ import logging
 import loggingConfig as lc
 
 lc.loggingConfigure()
-applogger = logging.getLogger(__name__)
+al = logging.getLogger(__name__)
 
 alu = ALU()
 mem = Memory(40)
 
 # dump instruction set as a variable w json
 insJson = json.dumps(instructionSet, indent=4)
-applogger.info("Instruction set dumped: %s", insJson)
+al.info("Instruction set: %s", insJson)
 print("Instruction set:", insJson)
 
-# write that json to file
+# dump instruction set to file
 try:
+    with open("instructionSet.json", "x") as f: 
+        f.write(insJson)
+        al.debug("Instruction set dumped, file not present")
+except FileExistsError:
     with open("instructionSet.json", "w") as f:
         f.write(insJson)
-except:
-    f = open("instructionSet.json", "x")
-    f.write(insJson)
-    f.close()
-
+        al.debug("Instruction set dumped; File existed, overwritten")
+        
+    
 app = Flask(__name__)
 app.secret_key = 'IHateLilly69420'
+al.info("Flask web app initialised")
 
 # make helpers class available in all templates
 # call using helper.x
 app.jinja_env.globals['helper'] = Helper
+al.info("Helpers initialised for use")
 
 @app.route('/')
 def alu_route():
+    al.info("Index route called")
     return render_template("content.html", aluObj=alu, memObj=mem, version=__version__, author=__author__)
 
 @app.route("/resetALU", methods=['POST'])
 def resetALU():
+    al.info("Reset ALU route called")
     alu.reset()
     return redirect(url_for('alu_route'))
 
 @app.route("/resetMem", methods=['POST'])
 def resetMem():
+    al.info("Reset mem route called")
     mem.reset()
     return redirect(url_for('alu_route'))
 
 @app.route('/execCycle', methods=['POST'])
 def execCycle():
+    al.info("Execute route called")
     alu.execute(mem)
     return redirect(url_for('alu_route'))
 
 @app.route('/pokeALU', methods=['POST'])
 def pokeALU():
+    al.info("Poke ALU route called")
     regno = request.form.get("regno")
     val = request.form.get("pokeval")
     print(f"RNO Recieved: {regno}")
@@ -75,6 +84,7 @@ def pokeALU():
 
 @app.route('/pokeMem', methods=['POST'])
 def pokeMem():
+    al.info("Poke memory route called")
     rowno = request.form.get("rowno")
     val = request.form.get("rowval")
     
@@ -92,7 +102,3 @@ def pokeMem():
         
     mem.poke(rowno, val)
     return redirect(url_for('alu_route'))
-
-@app.route('/exec', methods=['POST'])
-def exec():
-    pass
