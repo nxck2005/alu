@@ -22,7 +22,8 @@ def loggingConfigure():
         logfname,
         maxBytes=10*1024*1024,
         backupCount=5,
-        encoding='utf-8'
+        encoding='utf-8',
+        delay=True
     )
 
     # change level as needed
