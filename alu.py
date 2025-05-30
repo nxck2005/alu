@@ -17,7 +17,9 @@ class ALU:
         
         self.REGISTERS = [0,1,2]
         self.bits = bits
-        self.FLAGS = [0,0,0]
+        
+        # Zero, carry, sign, overflow
+        self.FLAGS = [0,0,0,0]
         
         self.REGISTERS = [[0]*size for size in sizes]
         
