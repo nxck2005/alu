@@ -1,4 +1,5 @@
 # Logging config, so all module level loggers can inherit
+# vibe coded, please use w caution. i could not be arsed lol
 
 import logging
 import os
