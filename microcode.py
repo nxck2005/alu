@@ -28,7 +28,7 @@ instructionSet = {
     "010001": "JMP", # jump to a row of instruction
     "010010": "JZ",  # jump to row if ZF = 1
     "010011": "JNZ", # jump to row if ZF = 0
-    "010100": "MOV", # move immediate value or register value to a register; needs more documentation
+    "010100": "MOV", # move next row into the register defined by the last 3 bits of the row; 0,1,2
     "010101": "RCR", # rotate contents of register right
     "010110": "RCL", # rotate contents of register left
 }
@@ -51,16 +51,4 @@ def ADC(reg1: list, reg2: list) -> list:
     pass
 
 def SBB(reg1: list, reg2: list) -> list:
-    pass
-    
-def AND():
-    pass
-
-def NOT():
-    pass
-
-def OR():
-    pass
-
-def XOR():
     pass
