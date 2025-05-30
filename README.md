@@ -3,7 +3,7 @@
 A ALU/assembly sim with a web interface for educational purposes.
 This does compute!
 
-## Key Features (planned)
+## Key Features
 
 - 32-bit
 - Support for 3 CPU registers for operations
