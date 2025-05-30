@@ -4,7 +4,7 @@
     <!-- surely theres a better way? -->
     <div class="exec-div">
         <form method="POST" action="{{ url_for('execCycle') }}">
-            <button type="submit">EXEC</button>
+            <button type="submit" id="execbutton">EXEC</button>
         </form>
     </div>
 
@@ -20,7 +20,7 @@
         </div>
         <div class="wrapper">
             <input type="text" name="pokeval" id="pokeval" placeholder="Hex value to poke">
-            <button type="submit">Poke ALU</button>
+            <button type="submit" id="pokealubutton">Poke ALU</button>
         </div>
     </form>
     <form method="POST" action="{{ url_for('pokeMem')}}">
@@ -30,16 +30,16 @@
             <input type="text" name="rowval" id="rowval" placeholder="Hex value to poke in">
         </div>
         <div class="wrapper">
-            <button type="submit">Poke Memory</button>
+            <button type="submit" id="pokemembutton">Poke Memory</button>
         </div>
     </form>
 
     <div class="reset-div">
         <form method="POST" action="{{ url_for('resetALU') }}">
-            <button type="submit">RESET ALU</button>
+            <button type="submit" id="resetalubutton">RESET ALU</button>
         </form>
         <form method="POST" action="{{ url_for('resetMem') }}">
-            <button type="submit">RESET MEM</button>
+            <button type="submit" id="resetmembutton">RESET MEM</button>
         </form>
     </div>
 
