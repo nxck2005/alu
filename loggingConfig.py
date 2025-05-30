@@ -5,6 +5,7 @@ import logging
 import os
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
+from constants import __version__
 
 def loggingConfigure():
     
@@ -13,11 +14,23 @@ def loggingConfigure():
     
     # formatted date for filename
     dtfmt = datetime.now().strftime("%Y%m%d_%H%M%S")
+    logfname = f"logs/alu_{__version__}_{dtfmt}.log"
     
-    rfHandler = RotatingFileHandler()
-    
+    # 10 MB per file, 5 log files
+    rtHandler = RotatingFileHandler(
+        logfname,
+        maxBytes=10*1024*1024,
+        backupCount=5,
+        encoding='utf-8'
+    )
+
+    # change level as needed
     logging.basicConfig(
-        filename=f"logs/alu_{dtfmt}.log",
-        
+        level=logging.DEBUG
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            rtHandler,
+            logging.StreamHandler(sys.stdout)
+        ],
     )
     return
