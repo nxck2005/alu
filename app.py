@@ -67,8 +67,12 @@ def execCycle():
 @app.route('/pokeALU', methods=['POST'])
 def pokeALU():
     al.info("Poke ALU route called")
-    regno = request.form.get("regno")
-    val = request.form.get("pokeval")
+    try:
+        regno = request.form.get("regno")
+        val = request.form.get("pokeval")
+    except:
+        al.error("An error occured while fetching. Empty field?")
+        return redirect(url_for('alu_route'))
     print(f"RNO Recieved: {regno}")
     print(f"Val recieved: {val}")
     
@@ -87,8 +91,12 @@ def pokeALU():
 @app.route('/pokeMem', methods=['POST'])
 def pokeMem():
     al.info("Poke memory route called")
-    rowno = request.form.get("rowno")
-    val = request.form.get("rowval")
+    try:
+        rowno = request.form.get("rowno")
+        val = request.form.get("rowval")
+    except:
+        al.error("An error occured while fetching. Empty field?")
+        return redirect(url_for('alu_route'))
     
     print(f"Row number recieved: {rowno}")
     print(f"Val recieved: {val}")
