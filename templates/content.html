@@ -2,9 +2,11 @@
 {% block content %}
 
     <!-- surely theres a better way? -->
-    <form method="POST" action="{{ url_for('execCycle') }}">
-        <button type="submit">EXEC</button>
-    </form>
+    <div class="exec-div">
+        <form method="POST" action="{{ url_for('execCycle') }}">
+            <button type="submit">EXEC</button>
+        </form>
+    </div>
 
     <form method="POST" action="{{ url_for('pokeALU') }}">
         <div>
