@@ -1,11 +1,14 @@
 from helpers import Helper
 from numpy import *
+import logging
 
 # instruction set.
 # some left blank
 # 6 bit opcode, rest are needed data as per instruction
 # 6 - 10 bits for operands as needed - 16 data bits
 #    register reference or addressing mode
+
+ml = logging.getLogger(__name__)
 
 instructionSet = {
     "000000": "NOP", # no operation
@@ -34,21 +37,23 @@ instructionSet = {
 }
 
 
-
-# implement all instructions here
-
 def NOP():
+    ml.info("Microcode executed for instruction NOP")
     pass
 
 # take a value, add it to ax
 def ADD(reg1: list, reg2: list) -> list:
+    ml.info("Microcode executed for instruction ADD")
     pass
 
 def SUB(reg1: list, reg2: list) -> list:
+    ml.info("Microcode executed for instruction SUB")
     pass
 
 def ADC(reg1: list, reg2: list) -> list:
+    ml.info("Microcode executed for instruction ADC")
     pass
 
 def SBB(reg1: list, reg2: list) -> list:
+    ml.info("Microcode executed for instruction SBB")
     pass
