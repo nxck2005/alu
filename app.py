@@ -48,12 +48,14 @@ def alu_route():
 def resetALU():
     al.info("Reset ALU route called")
     alu.reset()
+    al.info("ALU resetted!")
     return redirect(url_for('alu_route'))
 
 @app.route("/resetMem", methods=['POST'])
 def resetMem():
     al.info("Reset mem route called")
     mem.reset()
+    al.info("Memory resetted!")
     return redirect(url_for('alu_route'))
 
 @app.route('/execCycle', methods=['POST'])
