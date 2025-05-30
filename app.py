@@ -5,12 +5,18 @@ from helpers import Helper
 from microcode import instructionSet
 from constants import maxValue, minValue, __version__, __author__
 import json
+import logging
+import loggingConfig as lc
+
+lc.loggingConfigure()
+applogger = logging.getLogger(__name__)
 
 alu = ALU()
 mem = Memory(40)
 
 # dump instruction set as a variable w json
 insJson = json.dumps(instructionSet, indent=4)
+applogger.info("Instruction set dumped: %s", insJson)
 print("Instruction set:", insJson)
 
 # write that json to file

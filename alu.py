@@ -9,11 +9,11 @@ aluLogger = logging.getLogger(__name__)
 
 class ALU:     
     def __init__(self):
+        aluLogger.debug('Called ALU init')
         bits = validArchSizes
         
         # for genning registers
         sizes = [bits, bits, bits]
-        aluLogger.debug("")
         
         self.REGISTERS = [0,1,2]
         self.bits = bits
