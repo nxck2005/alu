@@ -51,13 +51,20 @@
         {% for reg in aluObj.REGISTERS %}
             <p class="register-row">{% for bit in reg %}{{ bit }}{% endfor %}      <span class="hexvalue">{{helper.binToHex(reg)}}</span></p>  
         {% endfor %}
+    <h5> Flags: (Zero, Sign, Carry, Overflow) </h5>
+        <p class="register-row"> {% for bit in aluObj.FLAGS %} {{ bit }} {% endfor %} </p>
     </div>
 
     <div class="memory">
     <h4> Memory </h4>
         <!-- loop index is to print the index of the row -->
+        <!-- highlighting for the instruction that GOT EXECUTED -->
         {% for row in memObj.MEMORY %}
-            <p class="memory-row"><span class="memory-index">{{ loop.index0 }}:</span> {% for bit in row %}{{ bit }}{% endfor %}        <span class="hexvalue">{{helper.binToHex(row)}}</span></p>    
+            {% if aluObj.pc - 1 == loop.index0 %}
+            <div class="current-row"><p><span class="memory-index">{{ loop.index0 }}:</span> {% for bit in row %}{{ bit }}{% endfor %}        <span class="hexvalue">{{helper.binToHex(row)}}</span></p></div>
+            {% else %}    
+            <p class="memory-row"><span class="memory-index">{{ loop.index0 }}:</span> {% for bit in row %}{{ bit }}{% endfor %}        <span class="hexvalue">{{helper.binToHex(row)}}</span></p>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

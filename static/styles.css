@@ -5,6 +5,16 @@
     font-family: monospace;
 }
 
+.current-row {
+    color: red;
+    font-weight: 55;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: monospace;
+}
+
 .register-row {
     color: blue;
     margin-top: 0;
