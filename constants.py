@@ -5,7 +5,7 @@
 
 # by @nxck2005
 
-__version__ = "0.0.6.dev"
+__version__ = "0.0.7.dev"
 __author__ = "nxck2005"
 
 # 32 bit word size
