@@ -70,17 +70,18 @@ def pokeALU():
     try:
         regno = request.form.get("regno")
         val = request.form.get("pokeval")
+        
+        print(f"RNO Recieved: {regno}")
+        print(f"Val recieved: {val}")
+        
+        regno = int(regno)
+        
+        # cast val into an int w base 16; hence hex value
+        val = int(val, 16)
     except:
-        al.error("An error occured while fetching. Empty field?")
+        al.error("An error occured while fetching or decoding value. Empty field?")
         return redirect(url_for('alu_route'))
-    print(f"RNO Recieved: {regno}")
-    print(f"Val recieved: {val}")
-    
-    regno = int(regno)
-    
-    # cast val into an int w base 16; hence hex value
-    val = int(val, 16)
-    
+
     # fallback error check
     if val > maxValue or val < minValue:
         flash("Value too big!", "success")
@@ -94,18 +95,18 @@ def pokeMem():
     try:
         rowno = request.form.get("rowno")
         val = request.form.get("rowval")
+        
+        print(f"Row number recieved: {rowno}")
+        print(f"Val recieved: {val}")
+        
+        rowno = int(rowno)
+        
+        # cast val into an int w base 16; hence hex value
+        val = int(val, 16)
     except:
-        al.error("An error occured while fetching. Empty field?")
+        al.error("An error occured while fetching or decoding value. Empty field?")
         return redirect(url_for('alu_route'))
-    
-    print(f"Row number recieved: {rowno}")
-    print(f"Val recieved: {val}")
-    
-    rowno = int(rowno)
-    
-    # cast val into an int w base 16; hence hex value
-    val = int(val, 16)
-   
+
     # fallback error check
     if val > maxValue or val < minValue:
         flash("Value too big!", "success")
