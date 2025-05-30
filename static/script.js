@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("hello, world")
+    console.log("Page loaded")
 
     const execButton = document.getElementById("execbutton")
     const pokeAluButton = document.getElementById("pokealubutton")
