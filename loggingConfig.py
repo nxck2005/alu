@@ -6,6 +6,7 @@ import os
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
 from constants import __version__
+import sys
 
 def loggingConfigure():
     
@@ -26,7 +27,7 @@ def loggingConfigure():
 
     # change level as needed
     logging.basicConfig(
-        level=logging.DEBUG
+        level=logging.DEBUG,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
         handlers=[
             rtHandler,
