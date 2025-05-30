@@ -7,6 +7,7 @@ This does compute!
 
 - 32-bit
 - Support for 3 CPU registers for operations
+- Accumulator-centric
 - Memory and program counter to store programs and data (unified)
 - Basic instruction set (arithmetic, logical, data movement, control flow)
 - Planned web interface (flask)
