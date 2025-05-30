@@ -7,10 +7,10 @@ This does compute!
 
 - 32-bit
 - Support for 3 CPU registers for operations
-- Accumulator-centric
+- Accumulator-centric (like 8080)
 - Memory and program counter to store programs and data (unified)
 - Basic instruction set (arithmetic, logical, data movement, control flow)
-- Planned web interface (flask)
+- Web interface using flask
 
 ## To run:
 
@@ -22,11 +22,6 @@ flask --app app run
 ```
 
 ## Short term todo
-- add poke function for debug DONE
-- add program counter DONE
-- add buttons to page for extra func DONE
-- make the button POST DONE
-- log changes to console, and maybe to a file
 - fix the leading zero problem (when the first 4 bits are 0, the hex comes out to be 1 digit short. this isnt the big problem, but when its done the other way, hex value to binary, and the first bits are 0, theyre not generated in the array)
 - add more stringent error checking to values poked in (empty, not numerical etc)
 - actually make it do stuff according to microcode
