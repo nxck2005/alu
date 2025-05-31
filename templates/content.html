@@ -60,7 +60,7 @@
         <!-- loop index is to print the index of the row -->
         <!-- highlighting for the instruction that GOT EXECUTED -->
         {% for row in memObj.MEMORY %}
-            {% if aluObj.pc - 1 == loop.index0 %}
+            {% if aluObj.pc == loop.index0 %}
             <div class="current-row"><p><span class="memory-index">{{ loop.index0 }}:</span> {% for bit in row %}{{ bit }}{% endfor %}        <span class="hexvalue">{{helper.binToHex(row)}}</span></p></div>
             {% else %}    
             <p class="memory-row"><span class="memory-index">{{ loop.index0 }}:</span> {% for bit in row %}{{ bit }}{% endfor %}        <span class="hexvalue">{{helper.binToHex(row)}}</span></p>

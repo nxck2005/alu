@@ -3,6 +3,7 @@ from helpers import Helper
 from microcode import *
 from constants import validArchSizes, maxValue, minValue
 import logging
+from memory import Memory
 
 # get namespaced logger
 aluLogger = logging.getLogger(__name__)
@@ -85,6 +86,7 @@ class ALU:
         if self.pc >= len(memory.MEMORY):
             self.pc = 0
         self.cycles += 1
+        aluLogger.info("Execute pre-req's done; cycles, PC increased")
         return
     
     
