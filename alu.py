@@ -99,7 +99,7 @@ class ALU:
             aluLogger.info("Decoded operation: %s", operation)
         except:
             # todo: add more verbose logs
-            aluLogger.info("An error occured while decoding the instruction. Maybe the key doesn't exist?")
+            aluLogger.info("An error occured while decoding the instruction. Maybe the instruction for the decoded opcode doesn't exist?")
         return
     
     
