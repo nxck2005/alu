@@ -81,7 +81,7 @@ class ALU:
         self.__init__()
         return
         
-    def execute(self, memory):
+    def execute(self, memory, instruction):
         self.pc += 1
         if self.pc >= len(memory.MEMORY):
             self.pc = 0

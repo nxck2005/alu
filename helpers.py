@@ -1,6 +1,13 @@
+import logging
+import typing
+
+mcLogger = logging.getLogger(__name__)
+
+
 class Helper:   
     @staticmethod
     def binToDec(register):        
+        mcLogger.debug("binary to decimal called")
         decimal = 0       
         # pass an register that assumes an array.
         # outputs the equivalent decimal number    
@@ -25,7 +32,8 @@ class Helper:
         return decimal
     
     @staticmethod    
-    def decToBin(number):       
+    def decToBin(number):
+        mcLogger.debug("decimal to binary called")
         # uses division by 2
         num = number   
         binary = []   
@@ -43,6 +51,7 @@ class Helper:
     
     @staticmethod
     def binToHex(r):
+        mcLogger.debug("binary to hex called")
         binVal = ""
         for digit in r:
             binVal += str(digit)
@@ -51,8 +60,22 @@ class Helper:
     
     @staticmethod
     def hexToBin(hexval):
+        mcLogger.debug("hex to binary called")
         binval = bin(hexval)
         reg = []
         for digit in binval[2:]:
             reg.append(digit)
         return reg
+    
+    @staticmethod
+    def decodeOpcode(instruction):
+        mcLogger.info("Decoding opcode from instruction %s", instruction)
+        try:
+            opcode = ""
+            ocBits = instruction[:6]
+            opcode = opcode.join(map(str, ocBits))
+            mcLogger.debug("Decoded opcode: %s", opcode)
+            return opcode
+        except:
+            mcLogger.error("An exception occured while decoding.")
+            return ""
