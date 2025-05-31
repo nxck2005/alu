@@ -42,18 +42,18 @@ def NOP():
     pass
 
 # take a value, add it to ax
-def ADD(reg1: list, reg2: list) -> list:
+def ADD(alu, memory):
     ml.info("Microcode executed for instruction ADD")
     pass
 
-def SUB(reg1: list, reg2: list) -> list:
+def SUB(alu, memory):
     ml.info("Microcode executed for instruction SUB")
     pass
 
-def ADC(reg1: list, reg2: list) -> list:
+def ADC(alu, memory):
     ml.info("Microcode executed for instruction ADC")
     pass
 
-def SBB(reg1: list, reg2: list) -> list:
+def SBB(alu, memory):
     ml.info("Microcode executed for instruction SBB")
     pass

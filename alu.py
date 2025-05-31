@@ -1,6 +1,6 @@
 from numpy import random, array, copy
 from helpers import Helper
-from microcode import *
+import microcode
 from constants import validArchSizes, maxValue, minValue
 import logging
 from memory import Memory
@@ -91,15 +91,20 @@ class ALU:
     def execute(self, memory, instruction):
         self.execPre(memory)
         aluLogger.info("Execute pre-req's done; cycles, PC increased")
-        
         try:
             opcode = Helper.decodeOpcode(instruction)
-            operation = instructionSet[opcode]
+            operation = microcode.instructionSet[opcode]
             aluLogger.info("Decoded opcode: %s", opcode)
             aluLogger.info("Decoded operation: %s", operation)
         except:
             # todo: add more verbose logs
             aluLogger.info("An error occured while decoding the instruction. Maybe the instruction for the decoded opcode doesn't exist?")
+            aluLogger.info("Proceeding with a NOP...")
+            operation = "NOP"
+        finally:
+            microcodeFunc = getattr(microcode, operation)
+            microcodeFunc(self, memory)
+            aluLogger.info("Executed instruction. Exec cycle complete")            
         return
     
     
