@@ -17,17 +17,16 @@ mem = Memory(40)
 # dump instruction set as a variable w json
 insJson = json.dumps(instructionSet, indent=4)
 al.info("Instruction set: %s", insJson)
-print("Instruction set:", insJson)
 
 # dump instruction set to file
 try:
     with open("instructionSet.json", "x") as f: 
         f.write(insJson)
-        al.debug("Instruction set dumped, file not present")
+        al.info("Instruction set dumped, file not present")
 except FileExistsError:
     with open("instructionSet.json", "w") as f:
         f.write(insJson)
-        al.debug("Instruction set dumped; File existed, overwritten")
+        al.info("Instruction set dumped; File existed, overwritten")
         
     
 app = Flask(__name__)
