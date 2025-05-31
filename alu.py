@@ -92,23 +92,53 @@ class ALU:
     
     # memory overflow and underflow checks
     # and updation of flags
+    # TODO add underflow check and make sign check better
     def execPost(self, memory):
         
         targetLength = validArchSizes
+        aluLogger.info("Target length for overflow check: %s", targetLength)
         
-        for row in memory.MEMORY:
-            val = int(Helper.binToHex(row),16)
+        # check memory overflow
+        for i in range(len(memory.MEMORY)):
+            val = int(Helper.binToHex(memory.MEMORY[i]), 16)
             if val > maxValue:
-                aluLogger.info("Memory Overflow detected: %s, trimming bits", row)
-                row = row[-targetLength:]
-                aluLogger.info("Row trimmed to: %s", row)
-                
-        for register in self.REGISTERS:
-            val = int(Helper.binToHex(register), 16)
+                aluLogger.info("Memory Overflow detected: %s, trimming bits", memory.MEMORY[i])
+                memory.MEMORY[i] = memory.MEMORY[i][-targetLength:]
+                aluLogger.info("Row trimmed to: %s", memory.MEMORY[i])
+
+        # check register overflow
+        overflowHappened = 0
+        for i in range(len(self.REGISTERS)):
+            val = int(Helper.binToHex(self.REGISTERS[i]), 16)
             if val > maxValue:
-                aluLogger.info("Register Overflow detected: %s, trimming bits", row)
-                register = register[-targetLength:]
-                aluLogger.info("Row trimmed to: %s", row)
+                aluLogger.info("Register Overflow detected: %s, trimming bits", self.REGISTERS[i])
+                self.REGISTERS[i] = self.REGISTERS[i][-targetLength:]
+                aluLogger.info("Register trimmed to: %s", self.REGISTERS[i])
+                overflowHappened = 1
+        
+        # overflow flag
+        if overflowHappened == 1:
+            self.FLAGS[3] = 1
+            aluLogger.info("Overflow happened hence setting OF flag")
+        else:
+            self.FLAGS[3] = 0
+            aluLogger.info("No overflow, flag OF reset")
+            
+        # zero flag
+        if int((Helper.binToHex(self.REGISTERS[0])), 16) == 0x0:
+            aluLogger.info("AX value: %s, setting ZF flag", Helper.binToHex(self.REGISTERS[0]))
+            self.FLAGS[0] = 1
+        else:
+            aluLogger.info("AX value: %s, resetting ZF flag", Helper.binToHex(self.REGISTERS[0]))
+            self.FLAGS[0] = 0
+        
+        # sign
+        if int((Helper.binToHex(self.REGISTERS[0])), 16) > 0x80000000:
+            aluLogger.info("AX value: %s, setting SF flag", Helper.binToHex(self.REGISTERS[0]))
+            self.FLAGS[2] = 1
+        else:
+            aluLogger.info("AX value: %s, resetting SF flag", Helper.binToHex(self.REGISTERS[0]))
+            self.FLAGS[2] = 0
             
             
         

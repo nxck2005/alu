@@ -36,9 +36,6 @@ instructionSet = {
     "00010110": "RCL", # rotate contents of register left
 }
 
-def call(operation, alu, memory):
-    operation()
-
 def NOP(alu, memory):
     ml.info("Microcode executed for instruction NOP")
     pass
