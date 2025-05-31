@@ -102,8 +102,14 @@ class ALU:
             aluLogger.info("Proceeding with a NOP...")
             operation = "NOP"
         finally:
-            microcodeFunc = getattr(microcode, operation)
-            microcodeFunc(self, memory)
+            try:
+                microcodeFunc = getattr(microcode, operation)
+            except:
+                aluLogger.info("An error occured while finding microcode for the decoded instruction. Maybe it doesn't exist?")
+                aluLogger.info("Proceeding with a NOP...")
+                microcodeFunc = getattr(microcode, "NOP")
+            finally:
+                microcodeFunc(self, memory)
             aluLogger.info("Executed instruction. Exec cycle complete")            
         return
     
