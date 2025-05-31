@@ -10,6 +10,7 @@ __author__ = "nxck2005"
 
 # 32 bit word size
 validArchSizes = 32
+opcodeSize = 8
 
 # values to enforce overflow/underflow
 # python just adds a bit/digit/hex blabla

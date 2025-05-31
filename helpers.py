@@ -72,7 +72,7 @@ class Helper:
         mcLogger.info("Decoding opcode from instruction %s", instruction)
         try:
             opcode = ""
-            ocBits = instruction[:6]
+            ocBits = instruction[:8]
             opcode = opcode.join(map(str, ocBits))
             mcLogger.debug("Decoded opcode: %s", opcode)
             return opcode

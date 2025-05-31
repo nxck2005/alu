@@ -99,21 +99,20 @@ class ALU:
             aluLogger.info("Decoded operation: %s", operation)
         except:
             # todo: add more verbose logs
-            aluLogger.info("An error occured while decoding the instruction. Maybe the instruction for the decoded opcode doesn't exist?")
-            aluLogger.info("Proceeding with a NOP...")
+            aluLogger.error("An error occured while decoding the instruction. Maybe the instruction for the decoded opcode doesn't exist?", exc_info=True)
+            aluLogger.error("Proceeding with a NOP...")
             operation = "NOP"
         finally:
             try:
                 microcodeFunc = getattr(microcode, operation)
             except:
-                aluLogger.info("An error occured while finding microcode for the decoded instruction. Maybe it doesn't exist?")
-                aluLogger.info("Proceeding with a NOP...")
+                aluLogger.error("An error occured while finding microcode for the decoded instruction. Maybe it doesn't exist?", exc_info=True)
+                aluLogger.error("Proceeding with a NOP...")
                 microcodeFunc = getattr(microcode, "NOP")
             finally:
                 microcodeFunc(self, memory)
             aluLogger.info("Executed instruction. Exec cycle complete")            
         return
-    
     
 def main():
     pass

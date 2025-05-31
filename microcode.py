@@ -1,6 +1,7 @@
 from helpers import Helper
 from numpy import *
 import logging
+from constants import *
 
 # instruction set.
 # some left blank
@@ -44,7 +45,10 @@ def NOP(alu, memory):
 
 # add next row to accumulator
 def ADD(alu, memory):
-    alu.REGISTERS[0] = memory.MEMORY[(alu.pc - 1)[6:]]
+    ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
+    ml.info("Value to add: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
+    alu.REGISTERS[0] = Helper.hexToBin(int(
+        (Helper.binToHex(alu.REGISTERS[0])[2:] + Helper.binToHex(memory.MEMORY[alu.pc - 1][opcodeSize:])[2:]), 16))
     ml.info("Microcode executed for instruction ADD")
     pass
 
