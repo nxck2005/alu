@@ -89,6 +89,7 @@ class ALU:
         return
         
     def execute(self, memory, instruction):
+        # kinda ugly, but i just want an MVP working. clean it up
         self.execPre(memory)
         aluLogger.info("Execute pre-req's done; cycles, PC increased")
         try:
