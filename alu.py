@@ -81,12 +81,37 @@ class ALU:
         self.__init__()
         return
     
+    ## Checks before and after execution of a word
+    # increment pc and cycles
     def execPre(self, memory):
         self.pc += 1
         if self.pc >= len(memory.MEMORY):
             self.pc = 0
         self.cycles += 1
         return
+    
+    # memory overflow and underflow checks
+    # and updation of flags
+    def execPost(self, memory):
+        
+        targetLength = validArchSizes
+        
+        for row in memory.MEMORY:
+            val = int(Helper.binToHex(row),16)
+            if val > maxValue:
+                aluLogger.info("Memory Overflow detected: %s, trimming bits", row)
+                row = row[-targetLength:]
+                aluLogger.info("Row trimmed to: %s", row)
+                
+        for register in self.REGISTERS:
+            val = int(Helper.binToHex(register), 16)
+            if val > maxValue:
+                aluLogger.info("Register Overflow detected: %s, trimming bits", row)
+                register = register[-targetLength:]
+                aluLogger.info("Row trimmed to: %s", row)
+            
+            
+        
         
     def execute(self, memory, instruction):
         # kinda ugly, but i just want an MVP working. clean it up
@@ -111,7 +136,9 @@ class ALU:
                 microcodeFunc = getattr(microcode, "NOP")
             finally:
                 microcodeFunc(self, memory)
-            aluLogger.info("Executed instruction. Exec cycle complete")            
+            aluLogger.info("Executed instruction. Exec cycle complete")
+            self.execPost(memory)
+            aluLogger.info("Post checks done")      
         return
     
 def main():
