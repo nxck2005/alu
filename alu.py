@@ -91,6 +91,15 @@ class ALU:
     def execute(self, memory, instruction):
         self.execPre(memory)
         aluLogger.info("Execute pre-req's done; cycles, PC increased")
+        
+        try:
+            opcode = Helper.decodeOpcode(instruction)
+            operation = instructionSet[opcode]
+            aluLogger.info("Decoded opcode: %s", opcode)
+            aluLogger.info("Decoded operation: %s", operation)
+        except:
+            # todo: add more verbose logs
+            aluLogger.info("An error occured while decoding the instruction. Maybe the key doesn't exist?")
         return
     
     

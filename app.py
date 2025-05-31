@@ -60,7 +60,7 @@ def resetMem():
 @app.route('/execCycle', methods=['POST'])
 def execCycle():
     al.info("Execute route called")
-    alu.execute(mem)
+    alu.execute(mem, mem.MEMORY[alu.pc])
     return redirect(url_for('alu_route'))
 
 @app.route('/pokeALU', methods=['POST'])
