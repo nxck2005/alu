@@ -80,12 +80,16 @@ class ALU:
     def reset(self):
         self.__init__()
         return
-        
-    def execute(self, memory, instruction):
+    
+    def execPre(self, memory):
         self.pc += 1
         if self.pc >= len(memory.MEMORY):
             self.pc = 0
         self.cycles += 1
+        return
+        
+    def execute(self, memory, instruction):
+        self.execPre(memory)
         aluLogger.info("Execute pre-req's done; cycles, PC increased")
         return
     
