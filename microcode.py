@@ -16,24 +16,24 @@ instructionSet = {
     "10000010": "SUB", # subtract value from accumulator
     "10000011": "ADC", # add value to accumulator, with carry flag
     "10000100": "SBB", # subtract value from accumulator, with carry flag as borrow
-    "00000101": "AND", # do a logical AND between provided operand and AX, store result in AX
-    "00000110": "NOT", # logical NOT on the value provided, store in AX
-    "00000111": "OR",  # logical OR between value provided and AX, store result in AX
-    "00001000": "XOR", # logical XOR between value provided
-    "00001001": "LHA", # load immediate value to high halfword of AX
-    "00001010": "LLA", # load immediate value to low halfword of AX
-    "00001011": "LHB", # load immediate value to high halfword of BX
-    "00001100": "LLB", # load immediate value to low halfword of BX
-    "00001101": "LHC", # load immediate value to high halfword of CX
-    "00001110": "LLC", # load immediate value to low halfword to CX
-    "00001111": "INC", # increment a register
-    "00010000": "DEC", # decrement a register
-    "00010001": "JMP", # jump to a row of instruction
-    "00010010": "JZ",  # jump to row if ZF = 1
-    "00010011": "JNZ", # jump to row if ZF = 0
-    "00010100": "MOV", # move next row into the register defined by the last 3 bits of the row; 0,1,2
-    "00010101": "RCR", # rotate contents of register right
-    "00010110": "RCL", # rotate contents of register left
+    "10000101": "AND", # do a logical AND between provided operand and AX, store result in AX
+    "10000110": "NOT", # logical NOT on the value provided, store in AX
+    "10000111": "OR",  # logical OR between value provided and AX, store result in AX
+    "10001000": "XOR", # logical XOR between value provided
+    "10001001": "LHA", # load immediate value to high halfword of AX
+    "10001010": "LLA", # load immediate value to low halfword of AX
+    "10001011": "LHB", # load immediate value to high halfword of BX
+    "10001100": "LLB", # load immediate value to low halfword of BX
+    "10001101": "LHC", # load immediate value to high halfword of CX
+    "10001110": "LLC", # load immediate value to low halfword to CX
+    "10001111": "INC", # increment a register
+    "10010000": "DEC", # decrement a register
+    "10010001": "JMP", # jump to a row of instruction
+    "10010010": "JZ",  # jump to row if ZF = 1
+    "10010011": "JNZ", # jump to row if ZF = 0
+    "10010100": "MOV", # move next row into the register defined by the last 3 bits of the row; 0,1,2
+    "10010101": "RCR", # rotate contents of register right
+    "10010110": "RCL", # rotate contents of register left
 }
 
 def NOP(alu, memory):
@@ -59,4 +59,7 @@ def ADC(alu, memory):
 
 def SBB(alu, memory):
     ml.info("Microcode executed for instruction SBB")
+    pass
+
+def LHA(alu, memory):
     pass
