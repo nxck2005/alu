@@ -8,6 +8,7 @@ class Helper:
     @staticmethod
     def ensureBinLength(register):
         if len(register) != 32:
+            mcLogger.info("Normalising register length")
             while len(register) != 32:
                 register.insert(0, 0)
         return register
