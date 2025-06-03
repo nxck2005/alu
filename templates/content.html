@@ -4,6 +4,7 @@
     <!-- surely theres a better way? -->
     <div class="exec-div">
         <form method="POST" action="{{ url_for('execCycle') }}">
+            <h5> Last operation: {{ aluObj.lastoperation }} </h5>
             <button type="submit" id="execbutton">EXEC</button>
         </form>
     </div>

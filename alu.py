@@ -36,6 +36,9 @@ class ALU:
         # program counter
         self.pc = 0
         
+        # last operation
+        self.lastoperation = 'NOP'
+        
         print(f"ALU initialized. Architecture: {self.bits} bit.")
         
         # remove this after alpha
@@ -152,11 +155,13 @@ class ALU:
             operation = microcode.instructionSet[opcode]
             aluLogger.info("Decoded opcode: %s", opcode)
             aluLogger.info("Decoded operation: %s", operation)
+            self.lastoperation = operation
         except:
             # todo: add more verbose logs
             aluLogger.error("An error occured while decoding the instruction. Maybe the instruction for the decoded opcode doesn't exist?", exc_info=True)
             aluLogger.error("Proceeding with a NOP...")
             operation = "NOP"
+            self.lastoperation = operation
         finally:
             try:
                 microcodeFunc = getattr(microcode, operation)
@@ -164,6 +169,7 @@ class ALU:
                 aluLogger.error("An error occured while finding microcode for the decoded instruction. Maybe it doesn't exist?", exc_info=True)
                 aluLogger.error("Proceeding with a NOP...")
                 microcodeFunc = getattr(microcode, "NOP")
+                self.lastoperation = "NOP"
             finally:
                 microcodeFunc(self, memory)
             aluLogger.info("Executed instruction. Exec cycle complete")

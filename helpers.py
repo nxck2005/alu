@@ -5,6 +5,8 @@ mcLogger = logging.getLogger(__name__)
 
 
 class Helper:
+    
+    # if the length of the binary register is not 32, add zeros to extend it to 32
     @staticmethod
     def ensureBinLength(register):
         if len(register) != 32:
