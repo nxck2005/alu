@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
         <!--<link rel="stylesheet" href="">-->
         <!-- tailwind import, use npm later -->
-        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
         <!-- js -->
         <script src="{{ url_for('static', filename='script.js') }}"></script>
     </head>
@@ -23,7 +23,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
-        <h1> ALU Simulation </h1>
+        <h1 style> ALU Simulation </h1>
         <h3> {{ version }} by @{{ author }} </h3>
         
         {% block content %}

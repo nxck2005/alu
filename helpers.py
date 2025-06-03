@@ -4,7 +4,14 @@ import typing
 mcLogger = logging.getLogger(__name__)
 
 
-class Helper:   
+class Helper:
+    @staticmethod
+    def ensureBinLength(register):
+        if len(register) != 32:
+            while len(register) != 32:
+                register.insert(0, 0)
+        return register
+       
     @staticmethod
     def binToDec(register):        
         mcLogger.debug("binary to decimal called")
@@ -46,7 +53,8 @@ class Helper:
             q = num // 2
             r = num % 2
             binary.append(r)
-            num = q   
+            num = q
+        Helper.ensureBinLength(binary)   
         return binary
     
     @staticmethod
@@ -65,6 +73,7 @@ class Helper:
         reg = []
         for digit in binval[2:]:
             reg.append(digit)
+        Helper.ensureBinLength(reg)
         return reg
     
     @staticmethod
