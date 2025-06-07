@@ -37,7 +37,7 @@ class Memory:
             print(f"{i} {line}")
             i += 1
     
-    # DEBUG INSTRUCTIONS
+    # DEBUG INSTRUCTION
     # Changes a memory row
     # TODO
     def poke(self, rowNo, value):
@@ -75,7 +75,7 @@ class Memory:
                 # convert each row to json string
                 rows = []
                 for arr in self.MEMORY:
-                    # Convert numpy array to list and format as json without spaces
+                    # convert numpy array to list and format as json without spaces
                     row_json = json.dumps(arr.tolist(), separators=(',', ':'))
                     rows.append(row_json)
                 
