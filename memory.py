@@ -12,7 +12,6 @@ class Memory:
         self.rows = rows
         self.archsize = archsize
         self.MEMORY = []
-            # for only zeros, uncomment the random.randint block, and comment the next try catch.
         try:
             self.readMemory("zero.json")
         except:
