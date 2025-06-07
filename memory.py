@@ -2,6 +2,9 @@ from numpy import random, array, copy
 from helpers import Helper
 from microcode import *
 from constants import validArchSizes, maxValue, minValue
+import json
+
+memLogger = logging.getLogger(__name__)
 
 class Memory:
     def __init__(self, rows: int = 20):
@@ -9,11 +12,14 @@ class Memory:
         self.rows = rows
         self.archsize = archsize
         self.MEMORY = []
-        for _ in range(self.rows):
-            # For only zeros, uncomment the next line, and comment the next.
-            # self.MEMORY.append([0]*archsize)
+            # for only zeros, uncomment the random.randint block, and comment the next try catch.
+        try:
+            self.readMemory("zero.json")
+        except:
+            memLogger.error("An error occured while reading from persistent memory. Falling back to random generation")
             self.MEMORY.append(random.randint(0, 2, size=archsize))
-        print(f'Memory initialized. {self.rows} lines.')
+        finally:
+            print(f'Memory initialized. {self.rows} lines.')
         
         # remove this after alpha
         print("  ", end='')
@@ -50,13 +56,45 @@ class Memory:
         print(f"On row number {rowNo}")
         return
     
+    def readMemory(self, fname):
+        fname = str(fname)
+        try:
+            with open(fname, "r") as f:
+                memory_list = json.load(f)
+                self.MEMORY = [array(lst) for lst in memory_list]
+        except:
+            memLogger.error("Error occured while reading from file", exc_info=True)
+        return
+
+    def writeMemory(self, fname):
+        fname = str(fname)
+        try:
+            with open(fname, 'w') as f:
+                f.write('[\n')  # start of json array
+                
+                # convert each row to json string
+                rows = []
+                for arr in self.MEMORY:
+                    # Convert numpy array to list and format as json without spaces
+                    row_json = json.dumps(arr.tolist(), separators=(',', ':'))
+                    rows.append(row_json)
+                
+                # join rows with comma and newline, and indent each row
+                formatted = ',\n'.join(rows)
+                f.write(' ' * 4 + formatted.replace('\n', '\n' + ' ' * 4))
+                
+                f.write('\n]')  # end of json array
+        except:
+            memLogger.error("Error occured while writing to file", exc_info=True)
+        
     # wrapper function but it feels more readable to me
     def reset(self):
         self.__init__()
         return
     
 def main():
-    pass
+    mem = Memory(20)
+    mem.writeMemory("memory.json")
 
 if __name__ == '__main__':
     main()
