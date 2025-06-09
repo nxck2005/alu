@@ -8,6 +8,9 @@ import json
 import logging
 import loggingConfig as lc
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 lc.loggingConfigure()
 al = logging.getLogger(__name__)
