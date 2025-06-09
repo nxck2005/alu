@@ -7,6 +7,7 @@ from constants import maxValue, minValue, __version__, __author__
 import json
 import logging
 import loggingConfig as lc
+import os
 
 lc.loggingConfigure()
 al = logging.getLogger(__name__)
@@ -30,7 +31,7 @@ except FileExistsError:
         
     
 app = Flask(__name__)
-app.secret_key = 'IHateLilly69420'
+app.secret_key = os.environ.get('SECRET_KEY', 'fallback-key')
 al.info("Flask web app initialised")
 
 # make helpers class available in all templates
@@ -114,4 +115,4 @@ def pokeMem():
     return redirect(url_for('alu_route'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 6969)), debug=False)
