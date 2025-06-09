@@ -20,7 +20,6 @@ mem = Memory(40)
 
 # dump instruction set as a variable w json
 insJson = json.dumps(instructionSet, indent=4)
-al.info("Instruction set: %s", insJson)
 
 # dump instruction set to file
 try:
