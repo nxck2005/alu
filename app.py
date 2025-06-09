@@ -120,6 +120,6 @@ def pokeMem():
 
 if __name__ == '__main__':
     port = 80
-    app.run(host='0.0.0.0', port=port, debug=False)
     al.info(f"App running on port {port}")
+    app.run(host='0.0.0.0', port=port, debug=False)
     
