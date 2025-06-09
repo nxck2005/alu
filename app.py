@@ -42,6 +42,15 @@ al.info(f"Secret key from env: {os.environ.get('SECRET_KEY', 'fallback_key')}")
 app.jinja_env.globals['helper'] = Helper
 al.info("Helpers initialised for use")
 
+@app.before_request
+def log_request_info():
+    al.info(f"Request: {request.method} {request.url}")
+
+@app.after_request
+def log_response_info(response):
+    al.info(f"Response: {response.status}")
+    return response
+
 @app.route('/')
 def alu_route():
     al.info("Index route called")
