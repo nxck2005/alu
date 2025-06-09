@@ -41,12 +41,6 @@ class ALU:
         
         print(f"ALU initialized. Architecture: {self.bits} bit.")
         
-        # remove this after alpha
-        print("Registers:")
-        print(f"AX: {self.REGISTERS[0]}")
-        print(f"BX: {self.REGISTERS[1]}")
-        print(f"CX: {self.REGISTERS[2]}")
-        
     def registers(self):
         print(f"Registers status after {self.cycles} cycles:")
         print(f"AX: {self.REGISTERS[0]}")

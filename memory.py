@@ -19,14 +19,6 @@ class Memory:
             self.MEMORY.append(random.randint(0, 2, size=archsize))
         finally:
             print(f'Memory initialized. {self.rows} lines.')
-        
-        # remove this after alpha
-        print("  ", end='')
-        print()
-        i = 0
-        for line in self.MEMORY:
-            print(f"{i} {line}")
-            i += 1
             
     def status(self):
         print(f"Memory size: {self.rows} rows, Total: {(self.rows * self.archsize / 8):.2f} B")
