@@ -35,8 +35,8 @@ except FileExistsError:
     
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'fallback-key')
-al.info("Flask web app initialised")
-print(f"Secret key: {os.environ.get('SECRET_KEY', 'fallback_key')}")
+al.info(f"Flask web app initialised with {app.secret_key}")
+al.info(f"Secret key from env: {os.environ.get('SECRET_KEY', 'fallback_key')}")
 
 # make helpers class available in all templates
 # call using helper.x
@@ -119,4 +119,7 @@ def pokeMem():
     return redirect(url_for('alu_route'))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=False)
+    port = 80
+    app.run(host='0.0.0.0', port=port, debug=False)
+    al.info(f"App running on port {port}")
+    
