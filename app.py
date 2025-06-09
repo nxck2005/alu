@@ -10,6 +10,7 @@ import loggingConfig as lc
 import os
 from dotenv import load_dotenv
 
+# pull secrets from env file
 load_dotenv()
 
 lc.loggingConfigure()
