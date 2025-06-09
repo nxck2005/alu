@@ -5,7 +5,7 @@
 
 # by @nxck2005
 
-__version__ = "0.1.2.alpha"
+__version__ = "0.1.2.alpha-prod"
 __author__ = "nxck2005"
 
 # 32 bit word size
