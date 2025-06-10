@@ -6,7 +6,7 @@ from constants import *
 # instruction set.
 # some left blank
 # 8 bit opcode, 24 bit extra data
-# arithmetic instructions start w 1 in their first bit until leading zero problem is fixed
+# arithmetic instructions start w 1 in their first bit, change, leading zero prob is fixed
 
 ml = logging.getLogger(__name__)
 
