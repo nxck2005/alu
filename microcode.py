@@ -11,7 +11,7 @@ from constants import *
 ml = logging.getLogger(__name__)
 
 instructionSet = {
-    "00000000": "NOP", # no operation
+    "10000000": "NOP", # no operation
     "10000001": "ADD", # add value to accumulator
     "10000010": "SUB", # subtract value from accumulator
     "10000011": "ADC", # add value to accumulator, with carry flag
@@ -50,6 +50,10 @@ def ADD(alu, memory):
     pass
 
 def SUB(alu, memory):
+    ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
+    ml.info("Value to sub: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
+    alu.REGISTERS[0] = Helper.hexToBin(int(
+        (Helper.binToHex(alu.REGISTERS[0])[2:] - Helper.binToHex(memory.MEMORY[alu.pc - 1][opcodeSize:])[2:]), 16))
     ml.info("Microcode executed for instruction SUB")
     pass
 
