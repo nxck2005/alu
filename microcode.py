@@ -44,18 +44,44 @@ def NOP(alu, memory):
 def ADD(alu, memory):
     ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
     ml.info("Value to add: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
-    alu.REGISTERS[0] = Helper.hexToBin(int(
-        (Helper.binToHex(alu.REGISTERS[0])[2:] + Helper.binToHex(memory.MEMORY[alu.pc - 1][opcodeSize:])[2:]), 16))
+
+    # Get the hexadecimal string for AX and the operand
+    ax_hex = Helper.binToHex(alu.REGISTERS[0])[2:]
+    operand_hex = Helper.binToHex(memory.MEMORY[alu.pc - 1][opcodeSize:])[2:]
+
+    # Convert the hexadecimal strings to integers
+    ax_int = int(ax_hex, 16)
+    operand_int = int(operand_hex, 16)
+
+    # Perform the addition plus mask to take care of overflow
+    result_int = (ax_int + operand_int) & 0xFFFFFFFF
+    
+    result_list = Helper.hexToBin(result_int)
+
+    # Convert the integer result back to binary and store it in AX
+    alu.REGISTERS[0] = result_list
     ml.info("Microcode executed for instruction ADD")
-    pass
 
 def SUB(alu, memory):
     ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
-    ml.info("Value to sub: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
-    alu.REGISTERS[0] = Helper.hexToBin(int(
-        (Helper.binToHex(alu.REGISTERS[0])[2:] - Helper.binToHex(memory.MEMORY[alu.pc - 1][opcodeSize:])[2:]), 16))
-    ml.info("Microcode executed for instruction SUB")
-    pass
+    ml.info("Value to add: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
+
+    # Get the hexadecimal string for AX and the operand
+    ax_hex = Helper.binToHex(alu.REGISTERS[0])[2:]
+    operand_hex = Helper.binToHex(memory.MEMORY[alu.pc - 1][opcodeSize:])[2:]
+
+    # Convert the hexadecimal strings to integers
+    ax_int = int(ax_hex, 16)
+    operand_int = int(operand_hex, 16)
+
+    # Perform the subtraction and mask for underflow
+    result_int = (ax_int - operand_int) & 0xFFFFFFFF
+    
+    result_list = Helper.hexToBin(result_int)
+
+    # Convert the integer result back to binary and store it in AX
+    alu.REGISTERS[0] = result_list
+    ml.info("Microcode executed for instruction ADD")
 
 def ADC(alu, memory):
     ml.info("Microcode executed for instruction ADC")
