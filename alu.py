@@ -168,7 +168,8 @@ class ALU:
                 microcodeFunc(self, memory)
             aluLogger.info("Executed instruction. Exec cycle complete")
             self.execPost(memory)
-            aluLogger.info("Post checks done")      
+            aluLogger.info("Post checks done")
+            memory.writeMemory()      
         return
     
 def main():
