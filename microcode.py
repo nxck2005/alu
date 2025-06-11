@@ -95,9 +95,10 @@ def ADC(alu, memory):
     # Convert the hexadecimal strings to integers
     ax_int = int(ax_hex, 16)
     operand_int = int(operand_hex, 16)
+    cf_int = int(cf_hex, 16)
 
     # Perform the addition plus mask to take care of overflow
-    result_int = (ax_int + operand_int) & 0xFFFFFFFF
+    result_int = (ax_int + operand_int + cf_int) & 0xFFFFFFFF
     
     result_list = Helper.hexToBin(result_int)
 
