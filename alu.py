@@ -39,7 +39,6 @@ class ALU:
         self.lastoperation = 'NOP'
         
         print(f"ALU initialized. Architecture: {self.bits} bit.")
-        print(self.REGISTERS)
         
     def registers(self):
         print(f"Registers status after {self.cycles} cycles:")
