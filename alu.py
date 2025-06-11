@@ -145,7 +145,7 @@ class ALU:
             self.lastoperation = operation
         except:
             # todo: add more verbose logs
-            aluLogger.error("An error occured while decoding the instruction. Maybe the instruction for the decoded opcode doesn't exist?", exc_info=True)
+            aluLogger.error("An error occured while decoding the instruction.", exc_info=True)
             aluLogger.error("Proceeding with a NOP...")
             operation = "NOP"
             self.lastoperation = operation
@@ -153,7 +153,7 @@ class ALU:
             try:
                 microcodeFunc = getattr(microcode, operation)
             except:
-                aluLogger.error("An error occured while finding microcode for the decoded instruction. Maybe it doesn't exist?", exc_info=True)
+                aluLogger.error("An error occured while finding microcode for the decoded instruction.", exc_info=True)
                 aluLogger.error("Proceeding with a NOP...")
                 microcodeFunc = getattr(microcode, "NOP")
                 self.lastoperation = "NOP"
