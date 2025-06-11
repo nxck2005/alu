@@ -32,20 +32,20 @@ class ALU:
         # last operation
         self.lastoperation = 'NOP'
         
-        print(f"ALU initialized. Architecture: {self.bits} bit.")
+        aluLogger.info(f"ALU initialized. Architecture: {self.bits} bit.")
         
     def registers(self):
-        print(f"Registers status after {self.cycles} cycles:")
-        print(f"AX: {self.REGISTERS[0]}")
-        print(f"BX: {self.REGISTERS[1]}")
-        print(f"CX: {self.REGISTERS[2]}")
+        aluLogger.info(f"Registers status after {self.cycles} cycles:")
+        aluLogger.info(f"AX: {self.REGISTERS[0]}")
+        aluLogger.info(f"BX: {self.REGISTERS[1]}")
+        aluLogger.info(f"CX: {self.REGISTERS[2]}")
         
     def status(self):
-        print(f"Architecture size: {self.bits}bit")
-        print(f"Registers status after {self.cycles} cycles:")
-        print(f"AX: {self.REGISTERS[0]}")
-        print(f"BX: {self.REGISTERS[1]}")
-        print(f"CX: {self.REGISTERS[2]}")
+        aluLogger.info(f"Architecture size: {self.bits}bit")
+        aluLogger.info(f"Registers status after {self.cycles} cycles:")
+        aluLogger.info(f"AX: {self.REGISTERS[0]}")
+        aluLogger.info(f"BX: {self.REGISTERS[1]}")
+        aluLogger.info(f"CX: {self.REGISTERS[2]}")
     
     # DEBUG INSTRUCTIONS
     # changes a register
@@ -53,17 +53,17 @@ class ALU:
     def poke(self, val, rNo):
         reg = array(Helper.hexToBin(val))
         if val > maxValue or val < minValue:
-            print("Poke failed. Invalid length")
+            aluLogger.info("Poke failed. Invalid length")
             return
         if rNo not in (0,1,2):
-            print("Poke failed. Invalid register reference.")
+            aluLogger.info("Poke failed. Invalid register reference.")
             return
         old = self.REGISTERS[rNo]
         self.REGISTERS[rNo] = copy(reg)
-        print("Poked ALU! This is a debug function and can be deprecated.")
-        print(f"Old: {old}")
-        print(f"New: {reg}")
-        print(f"On register {rNo}")
+        aluLogger.info("Poked ALU! This is a debug function and can be deprecated.")
+        aluLogger.info(f"Old: {old}")
+        aluLogger.info(f"New: {reg}")
+        aluLogger.info(f"On register {rNo}")
         return
     
     # i know, i know, wrapper function but it feels more readable to me
