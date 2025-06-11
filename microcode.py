@@ -81,7 +81,7 @@ def SUB(alu, memory):
 
     # Convert the integer result back to binary and store it in AX
     alu.REGISTERS[0] = result_list
-    ml.info("Microcode executed for instruction ADD")
+    ml.info("Microcode executed for instruction SUB")
 
 def ADC(alu, memory):
     ml.info("Microcode executed for instruction ADC")
