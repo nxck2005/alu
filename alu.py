@@ -23,12 +23,6 @@ class ALU:
         
         self.REGISTERS = [['0']*size for size in sizes]
         
-        # For random generation, uncomment the next declaration and loop,
-        # and comment the one before.
-        # i = 0
-        # for i in range(len(sizes)):
-        #     self.REGISTERS[i] = random.randint(0, 2, size=bits)
-        
         # cycles passed
         self.cycles = 0
         
