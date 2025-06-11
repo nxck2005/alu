@@ -12,17 +12,16 @@ class ALU:
     def __init__(self):
         aluLogger.debug('Called ALU init')
         bits = validArchSizes
+        self.bits = bits
+
+        # Zero, carry, sign, overflow
+        self.FLAGS = ['0','0','0','0']
         
         # for genning registers
         sizes = [bits, bits, bits]
-        
         self.REGISTERS = [0,1,2]
-        self.bits = bits
         
-        # Zero, carry, sign, overflow
-        self.FLAGS = [0,0,0,0]
-        
-        self.REGISTERS = [[0]*size for size in sizes]
+        self.REGISTERS = [['0']*size for size in sizes]
         
         # For random generation, uncomment the next declaration and loop,
         # and comment the one before.
@@ -40,6 +39,7 @@ class ALU:
         self.lastoperation = 'NOP'
         
         print(f"ALU initialized. Architecture: {self.bits} bit.")
+        print(self.REGISTERS)
         
     def registers(self):
         print(f"Registers status after {self.cycles} cycles:")
