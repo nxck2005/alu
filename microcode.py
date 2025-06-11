@@ -6,7 +6,7 @@ from constants import *
 # instruction set.
 # some left blank
 # 8 bit opcode, 24 bit extra data
-# arithmetic instructions start w 1 in their first bit until leading zero problem is fixed
+# arithmetic instructions start w 1 in their first bit, change, leading zero prob is fixed
 
 ml = logging.getLogger(__name__)
 
@@ -81,9 +81,29 @@ def SUB(alu, memory):
 
     # Convert the integer result back to binary and store it in AX
     alu.REGISTERS[0] = result_list
-    ml.info("Microcode executed for instruction ADD")
+    ml.info("Microcode executed for instruction SUB")
 
 def ADC(alu, memory):
+    ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
+    ml.info("Value to add: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
+
+    # Get the hexadecimal string for AX and the operands
+    ax_hex = Helper.binToHex(alu.REGISTERS[0])[2:]
+    operand_hex = Helper.binToHex(memory.MEMORY[alu.pc - 1][opcodeSize:])[2:]
+    cf_hex = Helper.binToHex(alu.FLAGS[1])
+
+    # Convert the hexadecimal strings to integers
+    ax_int = int(ax_hex, 16)
+    operand_int = int(operand_hex, 16)
+    cf_int = int(cf_hex, 16)
+
+    # Perform the addition plus mask to take care of overflow
+    result_int = (ax_int + operand_int + cf_int) & 0xFFFFFFFF
+    
+    result_list = Helper.hexToBin(result_int)
+
+    # Convert the integer result back to binary and store it in AX
+    alu.REGISTERS[0] = result_list
     ml.info("Microcode executed for instruction ADC")
     pass
 

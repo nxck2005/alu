@@ -12,23 +12,16 @@ class ALU:
     def __init__(self):
         aluLogger.debug('Called ALU init')
         bits = validArchSizes
+        self.bits = bits
+
+        # Zero, carry, sign, overflow
+        self.FLAGS = ['0','0','0','0']
         
         # for genning registers
         sizes = [bits, bits, bits]
-        
         self.REGISTERS = [0,1,2]
-        self.bits = bits
         
-        # Zero, carry, sign, overflow
-        self.FLAGS = [0,0,0,0]
-        
-        self.REGISTERS = [[0]*size for size in sizes]
-        
-        # For random generation, uncomment the next declaration and loop,
-        # and comment the one before.
-        # i = 0
-        # for i in range(len(sizes)):
-        #     self.REGISTERS[i] = random.randint(0, 2, size=bits)
+        self.REGISTERS = [['0']*size for size in sizes]
         
         # cycles passed
         self.cycles = 0
@@ -39,20 +32,20 @@ class ALU:
         # last operation
         self.lastoperation = 'NOP'
         
-        print(f"ALU initialized. Architecture: {self.bits} bit.")
+        aluLogger.info(f"ALU initialized. Architecture: {self.bits} bit.")
         
     def registers(self):
-        print(f"Registers status after {self.cycles} cycles:")
-        print(f"AX: {self.REGISTERS[0]}")
-        print(f"BX: {self.REGISTERS[1]}")
-        print(f"CX: {self.REGISTERS[2]}")
+        aluLogger.info(f"Registers status after {self.cycles} cycles:")
+        aluLogger.info(f"AX: {self.REGISTERS[0]}")
+        aluLogger.info(f"BX: {self.REGISTERS[1]}")
+        aluLogger.info(f"CX: {self.REGISTERS[2]}")
         
     def status(self):
-        print(f"Architecture size: {self.bits}bit")
-        print(f"Registers status after {self.cycles} cycles:")
-        print(f"AX: {self.REGISTERS[0]}")
-        print(f"BX: {self.REGISTERS[1]}")
-        print(f"CX: {self.REGISTERS[2]}")
+        aluLogger.info(f"Architecture size: {self.bits}bit")
+        aluLogger.info(f"Registers status after {self.cycles} cycles:")
+        aluLogger.info(f"AX: {self.REGISTERS[0]}")
+        aluLogger.info(f"BX: {self.REGISTERS[1]}")
+        aluLogger.info(f"CX: {self.REGISTERS[2]}")
     
     # DEBUG INSTRUCTIONS
     # changes a register
@@ -60,17 +53,17 @@ class ALU:
     def poke(self, val, rNo):
         reg = array(Helper.hexToBin(val))
         if val > maxValue or val < minValue:
-            print("Poke failed. Invalid length")
+            aluLogger.info("Poke failed. Invalid length")
             return
         if rNo not in (0,1,2):
-            print("Poke failed. Invalid register reference.")
+            aluLogger.info("Poke failed. Invalid register reference.")
             return
         old = self.REGISTERS[rNo]
         self.REGISTERS[rNo] = copy(reg)
-        print("Poked ALU! This is a debug function and can be deprecated.")
-        print(f"Old: {old}")
-        print(f"New: {reg}")
-        print(f"On register {rNo}")
+        aluLogger.info("Poked ALU! This is a debug function and can be deprecated.")
+        aluLogger.info(f"Old: {old}")
+        aluLogger.info(f"New: {reg}")
+        aluLogger.info(f"On register {rNo}")
         return
     
     # i know, i know, wrapper function but it feels more readable to me
@@ -152,7 +145,7 @@ class ALU:
             self.lastoperation = operation
         except:
             # todo: add more verbose logs
-            aluLogger.error("An error occured while decoding the instruction. Maybe the instruction for the decoded opcode doesn't exist?", exc_info=True)
+            aluLogger.error("An error occured while decoding the instruction.", exc_info=True)
             aluLogger.error("Proceeding with a NOP...")
             operation = "NOP"
             self.lastoperation = operation
@@ -160,7 +153,7 @@ class ALU:
             try:
                 microcodeFunc = getattr(microcode, operation)
             except:
-                aluLogger.error("An error occured while finding microcode for the decoded instruction. Maybe it doesn't exist?", exc_info=True)
+                aluLogger.error("An error occured while finding microcode for the decoded instruction.", exc_info=True)
                 aluLogger.error("Proceeding with a NOP...")
                 microcodeFunc = getattr(microcode, "NOP")
                 self.lastoperation = "NOP"

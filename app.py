@@ -1,3 +1,5 @@
+# The app file
+
 from flask import Flask, render_template, redirect, url_for, request, flash
 from alu import ALU
 from memory import Memory
