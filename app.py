@@ -1,6 +1,7 @@
 # The app file
 
 from flask import Flask, render_template, redirect, url_for, request, flash
+from flask_limiter import limiter
 from alu import ALU
 from memory import Memory
 from helpers import Helper
@@ -67,6 +68,7 @@ def alu_route():
 
 # status API endpoint
 @app.route('/hStatus')
+@limiter.limit('30 per minute')
 def healthStatus():
     al.info("Status fetch called")
     return {
