@@ -20,22 +20,22 @@
         <script src="{{ url_for('static', filename='script.js') }}"></script>
     </head>
     <body>
-    <div>
+    <div class='container-fluid'>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
         <h1 style> ALU Simulation </h1>
         <h3> {{ version }} by @{{ author }} </h3>
-        <h5> Started: <span id='startuptime'>loading...</span></h5>
-        <h5> Uptime: <span id="uptime">loading...</span></h5>
+        <h7> Started: <span id='startuptime'>loading...</span></h7>
+        <h7> Uptime: <span id="uptime">loading...</span></h>
         <div>
         {% block content %}
         {% endblock %}
         </div>
-        <h5> 
+        <h8> 
             alpha build {{ version[:-11] }}
-        </h5>
+        </h8>
     </div>
         <!--<script src="" async defer></script>-->
     </body>

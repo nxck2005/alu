@@ -4,14 +4,14 @@
     <!-- surely theres a better way? -->
     <div class="exec-div">
         <form method="POST" action="{{ url_for('execCycle') }}">
-            <h5> Last operation: {{ aluObj.lastoperation }} </h5>
+            <h7> Last operation: {{ aluObj.lastoperation }} </h7>
             <button type="submit" id="execbutton">EXEC</button>
         </form>
     </div>
 
     <form method="POST" action="{{ url_for('pokeALU') }}">
         <div>
-            <h4 class="smalltitle"> Poke ALU (debug) </h4>
+            <h6 class="smalltitle"> Poke ALU (debug) </h6>
             <select name="regno" id="regno">
                 <!-- Options are not dynamic right now. TODO -->
                  <option value="0"> AX </option>
@@ -26,7 +26,7 @@
     </form>
     <form method="POST" action="{{ url_for('pokeMem')}}">
         <div>
-            <h4 class="smalltitle"> Poke Memory (debug) </h4>
+            <h6 class="smalltitle"> Poke Memory (debug) </h6>
             <input type="text" name="rowno" id="rowno" placeholder="Row number to poke">
             <input type="text" name="rowval" id="rowval" placeholder="Hex value to poke in">
         </div>
