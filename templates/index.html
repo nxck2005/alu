@@ -10,9 +10,8 @@
         <title>ALU Simulation</title>
         <meta name="description" content="ALU simulation for students">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="color-scheme" content="light dark">
-        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.purple.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.purple.min.css"> -->
         <!--<link rel="stylesheet" href="">-->
         <!-- tailwind import, use npm later -->
         <!-- <script src="https://cdn.tailwindcss.com"></script> -->
@@ -29,7 +28,7 @@
         <h3> {{ version }} by @{{ author }} </h3>
         <h5> Started: <span id='startuptime'>loading...</span></h5>
         <h5> Uptime: <span id="uptime">loading...</span></h5>
-        <div class="container mx-auto px-4">
+        <div>
         {% block content %}
         {% endblock %}
         </div>
