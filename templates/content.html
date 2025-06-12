@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% block content %}
-
+<main class='container'>
     <!-- surely theres a better way? -->
     <div class="exec-div">
         <form method="POST" action="{{ url_for('execCycle') }}">
@@ -68,4 +68,5 @@
             {% endif %}
         {% endfor %}
     </div>
+</main>
 {% endblock %}
