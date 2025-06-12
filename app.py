@@ -11,6 +11,7 @@ import logging
 import loggingConfig as lc
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 
 # pull secrets from env file
 load_dotenv()
@@ -34,8 +35,11 @@ except FileExistsError:
         f.write(insJson)
         al.info("Instruction set dumped; File existed, overwritten")
         
-    
+
 app = Flask(__name__)
+STARTUP_TIME = datetime.now()
+al.info('Startup time logged: %s', STARTUP_TIME)
+
 app.secret_key = os.environ.get('SECRET_KEY', 'fallback-key')
 al.info(f"Flask web app initialised with {app.secret_key}")
 al.info(f"Secret key from env: {os.environ.get('SECRET_KEY', 'fallback_key')}")
@@ -58,7 +62,17 @@ al.info("Helpers initialised for use")
 @app.route('/')
 def alu_route():
     al.info("Index route called")
-    return render_template("content.html", aluObj=alu, memObj=mem, version=__version__, author=__author__)
+    return render_template("content.html",
+                           aluObj=alu, memObj=mem, version=__version__, author=__author__,)
+
+# status API endpoint
+@app.route('/hStatus')
+def healthStatus():
+    al.info("Status fetch called")
+    return {
+        'startupTime': STARTUP_TIME.isoformat(),
+        'serverTime': datetime.now().isoformat()
+    }
 
 @app.route("/resetALU", methods=['POST'])
 def resetALU():
