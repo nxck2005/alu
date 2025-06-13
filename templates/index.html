@@ -11,32 +11,36 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <!-- js -->
         <script src="{{ url_for('static', filename='script.js') }}"></script>
     </head>
     <body>
         
         <!-- navbar-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #090C08">
             <div class='col-6'>
                 <h1 style> ALU Simulation </h1>
             </div>
             <div class='col'>
-                <h3 class='ra'> {{ version }} by @{{ author }} </h3>
+                <h3 class='ra'> by @{{ author }} </h3>
             </div>
         </nav>
 
     <!-- main body -->    
     <div class='container-fluid'>
+
         <div class='row'>
-            <div class='col-9'>
-                <h7> Started: <span id='startuptime'>loading...</span></h7>
-            </div>
-            <div class='col'>
-                <h7 class='text-xs-right'> Uptime: <span id="uptime" class='text-xs-right'>loading...</span></h7>
-            </div>
+
+                <div class='card-body'>
+                    <div class='col-9'>
+                        <h7> Started: <span id='startuptime'>loading...</span></h7>
+                    </div>
+                    <div class='col'>
+                        <h7 class='text-xs-right'> Uptime: <span id="uptime" class='text-xs-right'>loading...</span></h7>
+                    </div>
+                </div>
+
         </div>
         <div>
         {% block content %}
