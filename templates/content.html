@@ -1,18 +1,20 @@
 {% extends "index.html" %}
 {% block content %}
-
+<div class='row'>
     <!-- surely theres a better way? -->
-    <div class="exec-div">
         <form method="POST" action="{{ url_for('execCycle') }}">
-            <h7> Last operation: {{ aluObj.lastoperation }} </h7>
-            <button type="submit" id="execbutton">EXEC</button>
+            <div class='col-12'>
+                <h7> Last operation: {{ aluObj.lastoperation }} </h7>
+            </div>
+            <div class='col-4'>
+                <button type="submit" id="execbutton" class='btn btn-success btn-sm'>EXECUTE CYCLE</button>
+            </div>
         </form>
-    </div>
-
+</div>
     <form method="POST" action="{{ url_for('pokeALU') }}">
         <div>
             <h6 class="smalltitle"> Poke ALU (debug) </h6>
-            <select name="regno" id="regno">
+            <select name="regno" id="regno" class="form-control-sm">
                 <!-- Options are not dynamic right now. TODO -->
                  <option value="0"> AX </option>
                  <option value="1"> BX </option>
