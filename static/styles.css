@@ -2,21 +2,24 @@
     color: green;
     margin-top: 0;
     margin-bottom: 0;
-    font-family: monospace;
+    font-family: "Space Mono", monospace;
+    font-size: 16px;
 }
 
 .memory-row-selected {
     color: red;
     margin-top: 0;
     margin-bottom: 0;
-    font-family: monospace;
+    font-family: "Space Mono", monospace;
+    font-size: 16px;
 }
 
 .register-row {
     color: blue;
     margin-top: 0;
     margin-bottom: 0;
-    font-family: monospace;
+    font-family: "Space Mono", monospace;
+    font-size: 16px;
 }
 
 .hexvalue {
@@ -25,8 +28,9 @@
     margin-bottom: 0;
     font-weight: bold;
     text-transform: uppercase;
-    font-family: monospace;
+    font-family: "Space Mono", monospace;
     padding-left: 20px;
+    font-size: 16px;
 }
 
 .wrapper {
@@ -53,4 +57,25 @@
 
 body {
     background-color: gainsboro;
+    font-family: "DM Sans", sans-serif;
+}
+
+.ra {
+    text-align: right;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255,.75) !important;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgba(255,255,255,1) !important;
+}
+
+.navbar-dark .navbar-brand {
+  color: white !important;
+}
+
+#titletag, #authortag {
+    color: gainsboro;
 }
