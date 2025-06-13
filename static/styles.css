@@ -75,3 +75,7 @@ body {
 .navbar-dark .navbar-brand {
   color: white !important;
 }
+
+#titletag, #authortag {
+    color: gainsboro;
+}

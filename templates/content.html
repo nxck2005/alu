@@ -12,46 +12,62 @@
         </form>
 </div>
 
-<div class='row'>
-    <form method="POST" action="{{ url_for('pokeALU') }}">
-        <div>
-            <h6 class="smalltitle"> Poke ALU (debug) </h6>
-            <select name="regno" id="regno" class="form-control-sm">
-                <!-- Options are not dynamic right now. TODO -->
-                 <option value="0"> AX </option>
-                 <option value="1"> BX </option>
-                 <option value="2"> CX </option>
-            </select>
-        </div>
-        <div class="wrapper">
-            <input type="text" name="pokeval" id="pokeval" placeholder="Hex value to poke">
-            <button type="submit" id="pokealubutton">Poke ALU</button>
-        </div>
-    </form>
-</div>
-
-<div class='row'>
-    <form method="POST" action="{{ url_for('pokeMem')}}">
-        <div>
-            <h6 class="smalltitle"> Poke Memory (debug) </h6>
-            <input type="text" name="rowno" id="rowno" placeholder="Row number to poke">
-            <input type="text" name="rowval" id="rowval" placeholder="Hex value to poke in">
-        </div>
-        <div class="wrapper">
-            <button type="submit" id="pokemembutton">Poke Memory</button>
-        </div>
-    </form>
-</div>
-
-<div class='row'>
-    <div class="reset-div">
-        <form method="POST" action="{{ url_for('resetALU') }}">
-            <button type="submit" id="resetalubutton">RESET ALU</button>
-        </form>
-        <form method="POST" action="{{ url_for('resetMem') }}">
-            <button type="submit" id="resetmembutton">RESET MEM</button>
+<div class='row mt-3'>
+    <div class='col'>
+        <form method="POST" action="{{ url_for('pokeALU') }}">
+            <div>
+                <h6 class="smalltitle"> Poke ALU (debug) </h6>
+                <select name="regno" id="regno" class="form-control-sm">
+                    <!-- Options are not dynamic right now. TODO -->
+                    <option value="0"> AX </option>
+                    <option value="1"> BX </option>
+                    <option value="2"> CX </option>
+                </select>
+            </div>
+            <div>
+                <input type="text" name="pokeval" id="pokeval" placeholder="Hex value to poke">
+                <button type="submit" id="pokealubutton" class='btn btn-secondary ml-3'>Poke ALU</button>
+            </div>
         </form>
     </div>
+</div>
+
+<div class='row mt-3'>
+    <div class='col'>
+        <form method="POST" action="{{ url_for('pokeMem')}}">
+            <div>
+                <h6 class="smalltitle"> Poke Memory (debug) </h6>
+                <input type="text" name="rowno" id="rowno" placeholder="Row number to poke">
+                <input type="text" name="rowval" id="rowval" placeholder="Hex value to poke in">
+            </div>
+    </div>
+</div>
+<div class='row mt-3'>
+    <div class='col'>
+            <div>
+                <button type="submit" id="pokemembutton" class='btn btn-secondary'>Poke Memory</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class='row mt-3'>
+
+            <div class='col'>
+                <form method="POST" action="{{ url_for('resetALU') }}">
+                    <button type="submit" id="resetalubutton" class="btn btn-danger">RESET ALU</button>
+                </form>
+            </div>
+
+</div>
+<div class='row mt-2 mb-4'>
+
+            <div class='col'>
+                <form method="POST" action="{{ url_for('resetMem') }}">
+                    <button type="submit" id="resetmembutton" class="btn btn-danger">RESET MEM</button>
+                </form>
+            </div>
+
 </div>
 
     <h4> Cycles passed: {{ aluObj.cycles }} </h4>
