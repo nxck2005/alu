@@ -11,6 +11,8 @@
             </div>
         </form>
 </div>
+
+<div class='row'>
     <form method="POST" action="{{ url_for('pokeALU') }}">
         <div>
             <h6 class="smalltitle"> Poke ALU (debug) </h6>
@@ -26,6 +28,9 @@
             <button type="submit" id="pokealubutton">Poke ALU</button>
         </div>
     </form>
+</div>
+
+<div class='row'>
     <form method="POST" action="{{ url_for('pokeMem')}}">
         <div>
             <h6 class="smalltitle"> Poke Memory (debug) </h6>
@@ -36,7 +41,9 @@
             <button type="submit" id="pokemembutton">Poke Memory</button>
         </div>
     </form>
+</div>
 
+<div class='row'>
     <div class="reset-div">
         <form method="POST" action="{{ url_for('resetALU') }}">
             <button type="submit" id="resetalubutton">RESET ALU</button>
@@ -45,6 +52,7 @@
             <button type="submit" id="resetmembutton">RESET MEM</button>
         </form>
     </div>
+</div>
 
     <h4> Cycles passed: {{ aluObj.cycles }} </h4>
     <h4> Program counter: {{ aluObj.pc }} </h4>
