@@ -6,3 +6,4 @@ redundant.py
 *.log
 logs/
 .env
+.venv/
