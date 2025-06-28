@@ -36,7 +36,9 @@ instructionSet = {
     "10010110": "RCL", # rotate contents of register left
 }
 
+# no operation, does nothing
 def NOP(alu, memory):
+    ml.info("NOP encountered in an instruction row. No operation performed.")
     ml.info("Microcode executed for instruction NOP")
     pass
 
@@ -62,6 +64,7 @@ def ADD(alu, memory):
     alu.REGISTERS[0] = result_list
     ml.info("Microcode executed for instruction ADD")
 
+# subtract next row from accumulator
 def SUB(alu, memory):
     ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
     ml.info("Value to add: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
@@ -83,6 +86,7 @@ def SUB(alu, memory):
     alu.REGISTERS[0] = result_list
     ml.info("Microcode executed for instruction SUB")
 
+# add next row to accumulator, with carry flag
 def ADC(alu, memory):
     ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
     ml.info("Value to add: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
@@ -99,7 +103,6 @@ def ADC(alu, memory):
 
     # Perform the addition plus mask to take care of overflow
     result_int = (ax_int + operand_int + cf_int) & 0xFFFFFFFF
-    
     result_list = Helper.hexToBin(result_int)
 
     # Convert the integer result back to binary and store it in AX
@@ -107,6 +110,7 @@ def ADC(alu, memory):
     ml.info("Microcode executed for instruction ADC")
     pass
 
+# subtract next row from accumulator, with carry flag as borrow
 def SBB(alu, memory):
     ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
     ml.info("Value to add: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
@@ -131,5 +135,26 @@ def SBB(alu, memory):
     ml.info("Microcode executed for instruction SBB")
     pass
 
+# load higher halfword, last 16 bits of row to AX
 def LHA(alu, memory):
+    ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
+    ml.info("Immediate value to load: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
+
+    target_binary = memory.MEMORY[alu.pc - 1][16:]
+    
+    alu.REGISTERS[0][0:16] = target_binary
+    ml.info("AX value after loading high halfword: %s", Helper.binToHex(alu.REGISTERS[0]))
+    ml.info("Microcode executed for instruction LHA")
+    pass
+
+# load lower halfword, first 16 bits of row to AX
+def LLA(alu, memory):
+    ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
+    ml.info("Immediate value to load: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
+
+    target_binary = memory.MEMORY[alu.pc - 1][16:]
+    
+    alu.REGISTERS[0][16:] = target_binary
+    ml.info("AX value after loading high halfword: %s", Helper.binToHex(alu.REGISTERS[0]))
+    ml.info("Microcode executed for instruction LHA")
     pass
