@@ -6,6 +6,9 @@ from constants import *
 # instruction set.
 # some left blank
 # 8 bit opcode, 24 bit extra data
+# 16 - 16
+# 8 - 8 - 16
+# opcode - discerning data - halfword data
 # arithmetic instructions start w 1 in their first bit, change, leading zero prob is fixed
 
 ml = logging.getLogger(__name__)
@@ -26,8 +29,8 @@ instructionSet = {
     "10001100": "LLB", # load immediate value to low halfword of BX DONE
     "10001101": "LHC", # load immediate value to high halfword of CX DONE
     "10001110": "LLC", # load immediate value to low halfword to CX DONE
-    "10001111": "INC", # increment a register
-    "10010000": "DEC", # decrement a register
+    "10001111": "INC", # increment a register DONE
+    "10010000": "DEC", # decrement a register DONE
     "10010001": "JMP", # jump to a row of instruction
     "10010010": "JZ",  # jump to row if ZF = 1
     "10010011": "JNZ", # jump to row if ZF = 0
@@ -37,12 +40,13 @@ instructionSet = {
 }
 
 # no operation, does nothing
-def NOP():
+def NOP(alu, memory):
     ml.info("NOP encountered in an instruction row. No operation performed.")
     ml.info("Microcode executed for instruction NOP")
     pass
 
 # add next row to accumulator
+# 2: to slice the 0x
 def ADD(alu, memory):
     ml.info("AX value before: %s", Helper.binToHex(alu.REGISTERS[0]))
     ml.info("Value to add: %s", memory.MEMORY[alu.pc - 1][opcodeSize:])
@@ -204,3 +208,37 @@ def LLC(alu, memory):
     ml.info("CX value after loading low halfword: %s", Helper.binToHex(alu.REGISTERS[2]))
     ml.info("Microcode executed for instruction LLC")
     pass
+
+def INC(alu, memory):
+    try:
+        # what register to increment?
+        regno = Helper.binToDec(memory.MEMORY[alu.pc - 1][opcodeSize:(opcodeSize + 8)])
+        x_hex = Helper.binToHex(alu.REGISTERS[regno])[2:]
+        ml.info("Register %s value before: %s", regno, x_hex)
+        x_int = int(x_hex, 16)
+
+        result_int = (x_int + 1) & 0xFFFFFFFF
+        result_list = Helper.hexToBin(result_int)
+        alu.REGISTERS[regno] = result_list
+        ml.info("Register %s value after incrementing: %s",regno, Helper.binToHex(alu.REGISTERS[regno]))
+    except IndexError:
+        ml.error("Error while incrementing. Check if the register number is valid?")
+    finally:
+        ml.info("Microcode executed for instruction INC")
+
+def DEC(alu, memory):
+    try:
+        # what register to decrement?
+        regno = Helper.binToDec(memory.MEMORY[alu.pc - 1][opcodeSize:(opcodeSize + 8)])
+        x_hex = Helper.binToHex(alu.REGISTERS[regno])[2:]
+        ml.info("Register %s value before: %s",regno, x_hex)
+        x_int = int(x_hex, 16)
+
+        result_int = (x_int - 1) & 0xFFFFFFFF
+        result_list = Helper.hexToBin(result_int)
+        alu.REGISTERS[regno] = result_list
+        ml.info("Register %s value after decrementing: %s",regno, Helper.binToHex(alu.REGISTERS[regno]))
+    except IndexError:
+        ml.error("Error while decrementing. Check if the register number is valid?")
+    finally:
+        ml.info("Microcode executed for instruction DEC")
