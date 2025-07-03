@@ -33,7 +33,7 @@ class Helper:
         val = 0
         while j < len(register):           
             # value of the current place e.g. 2^3 * (1 or 0)
-            val += register[j] * placevalues[j]    
+            val += int(register[j]) * placevalues[j]    
             # add that to total
             decimal += val
             # reset buffer

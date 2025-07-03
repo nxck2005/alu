@@ -47,6 +47,9 @@ class Memory:
         print(f"Old: {old}")
         print(f"New: {self.MEMORY[rowNo]}")
         print(f"On row number {rowNo}")
+        print(f"Writing..")
+        self.writeMemory()
+        print("Done!")
         return
     
     def readMemory(self, fname='memory.json'):
