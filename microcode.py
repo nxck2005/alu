@@ -11,21 +11,21 @@ from constants import *
 ml = logging.getLogger(__name__)
 
 instructionSet = {
-    "10000000": "NOP", # no operation
-    "10000001": "ADD", # add value to accumulator
-    "10000010": "SUB", # subtract value from accumulator
-    "10000011": "ADC", # add value to accumulator, with carry flag
-    "10000100": "SBB", # subtract value from accumulator, with carry flag as borrow
+    "10000000": "NOP", # no operation DONE
+    "10000001": "ADD", # add value to accumulator DONE
+    "10000010": "SUB", # subtract value from accumulator DONE
+    "10000011": "ADC", # add value to accumulator, with carry flag DONE
+    "10000100": "SBB", # subtract value from accumulator, with carry flag as borrow DONE
     "10000101": "AND", # do a logical AND between provided operand and AX, store result in AX
     "10000110": "NOT", # logical NOT on the value provided, store in AX
     "10000111": "OR",  # logical OR between value provided and AX, store result in AX
     "10001000": "XOR", # logical XOR between value provided
-    "10001001": "LHA", # load immediate value to high halfword of AX
-    "10001010": "LLA", # load immediate value to low halfword of AX
-    "10001011": "LHB", # load immediate value to high halfword of BX
-    "10001100": "LLB", # load immediate value to low halfword of BX
-    "10001101": "LHC", # load immediate value to high halfword of CX
-    "10001110": "LLC", # load immediate value to low halfword to CX
+    "10001001": "LHA", # load immediate value to high halfword of AX DONE
+    "10001010": "LLA", # load immediate value to low halfword of AX DONE
+    "10001011": "LHB", # load immediate value to high halfword of BX DONE
+    "10001100": "LLB", # load immediate value to low halfword of BX DONE
+    "10001101": "LHC", # load immediate value to high halfword of CX DONE
+    "10001110": "LLC", # load immediate value to low halfword to CX DONE
     "10001111": "INC", # increment a register
     "10010000": "DEC", # decrement a register
     "10010001": "JMP", # jump to a row of instruction
@@ -37,7 +37,7 @@ instructionSet = {
 }
 
 # no operation, does nothing
-def NOP(alu, memory):
+def NOP():
     ml.info("NOP encountered in an instruction row. No operation performed.")
     ml.info("Microcode executed for instruction NOP")
     pass
@@ -155,8 +155,8 @@ def LLA(alu, memory):
     target_binary = memory.MEMORY[alu.pc - 1][16:]
     
     alu.REGISTERS[0][16:] = target_binary
-    ml.info("AX value after loading high halfword: %s", Helper.binToHex(alu.REGISTERS[0]))
-    ml.info("Microcode executed for instruction LHA")
+    ml.info("AX value after loading low halfword: %s", Helper.binToHex(alu.REGISTERS[0]))
+    ml.info("Microcode executed for instruction LLA")
     pass
 
 # load higher halfword, last 16 bits of row to BX
@@ -172,7 +172,7 @@ def LHB(alu, memory):
     pass
 
 # load lower halfword, last 16 bits of row to BX
-def LHB(alu, memory):
+def LLB(alu, memory):
     ml.info("BX value before: %s", Helper.binToHex(alu.REGISTERS[1]))
     ml.info("Immediate value to load: %s", memory.MEMORY[alu.pc - 1][16:])
 
@@ -180,5 +180,27 @@ def LHB(alu, memory):
     
     alu.REGISTERS[1][16:] = target_binary
     ml.info("BX value after loading low halfword: %s", Helper.binToHex(alu.REGISTERS[1]))
-    ml.info("Microcode executed for instruction LHB")
+    ml.info("Microcode executed for instruction LLB")
+    pass
+
+def LHC(alu, memory):
+    ml.info("CX value before: %s", Helper.binToHex(alu.REGISTERS[2]))
+    ml.info("Immediate value to load: %s", memory.MEMORY[alu.pc - 1][16:])
+
+    target_binary = memory.MEMORY[alu.pc - 1][16:]
+    
+    alu.REGISTERS[2][0:16] = target_binary
+    ml.info("CX value after loading high halfword: %s", Helper.binToHex(alu.REGISTERS[2]))
+    ml.info("Microcode executed for instruction LHC")
+    pass
+
+def LLC(alu, memory):
+    ml.info("CX value before: %s", Helper.binToHex(alu.REGISTERS[2]))
+    ml.info("Immediate value to load: %s", memory.MEMORY[alu.pc - 1][16:])
+
+    target_binary = memory.MEMORY[alu.pc - 1][16:]
+    
+    alu.REGISTERS[2][16:] = target_binary
+    ml.info("CX value after loading low halfword: %s", Helper.binToHex(alu.REGISTERS[2]))
+    ml.info("Microcode executed for instruction LLC")
     pass
