@@ -31,7 +31,7 @@ instructionSet = {
     "10001110": "LLC", # load immediate value to low halfword to CX DONE
     "10001111": "INC", # increment a register DONE
     "10010000": "DEC", # decrement a register DONE
-    "10010001": "JMP", # jump to a row of instruction
+    "10010001": "JMP", # jump to a row of instruction DONE
     "10010010": "JZ",  # jump to row if ZF = 1
     "10010011": "JNZ", # jump to row if ZF = 0
     "10010100": "MOV", # move next row into the register defined by the last 3 bits of the row; 0,1,2
@@ -209,6 +209,7 @@ def LLC(alu, memory):
     ml.info("Microcode executed for instruction LLC")
     pass
 
+# increment a register
 def INC(alu, memory):
     try:
         # what register to increment?
@@ -226,6 +227,7 @@ def INC(alu, memory):
     finally:
         ml.info("Microcode executed for instruction INC")
 
+# decrement register
 def DEC(alu, memory):
     try:
         # what register to decrement?
@@ -242,3 +244,20 @@ def DEC(alu, memory):
         ml.error("Error while decrementing. Check if the register number is valid?")
     finally:
         ml.info("Microcode executed for instruction DEC")
+
+
+# jump to a row of instruction in memory
+def JMP(alu, memory):
+    try:
+        ml.info("Jumping to row %s", Helper.binToDec(memory.MEMORY[alu.pc - 1][opcodeSize:]))
+        operand = memory.MEMORY[alu.pc - 1][opcodeSize:]
+        target_row = Helper.binToDec(operand)
+        if not (0 <= target_row < len(memory.MEMORY)):
+            raise IndexError(f"Invalid jump target: {target_row}, while number of rows: {len(memory.MEMORY)}")
+        ml.info(f"Jumping from row {alu.pc - 1} to {target_row}")
+        alu.pc = target_row
+    except (ValueError, IndexError) as e:
+        ml.error("Jump error: index out of bounds")
+        ml.warning("Executed NOP instead.")
+    finally:
+        ml.info("Microcode executed for instruction JMP")

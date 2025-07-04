@@ -8,7 +8,7 @@
 # versions: x-x-prod -> for deployment, do not tamper w/o a PR
 # x-x-dev -> for dev work
 
-__version__ = "0.3.0.alpha-prod"
+__version__ = "0.4.0.alpha-dev"
 __author__ = "nxck2005"
 
 # 32 bit word size
