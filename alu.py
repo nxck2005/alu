@@ -29,10 +29,10 @@ class ALU:
         # program counter
         self.pc = 0
         
-        # last operation
+        # last operation, just for reference on the html
         self.lastoperation = 'NOP'
         
-        aluLogger.info(f"ALU initialized. Architecture: {self.bits} bit.")
+        aluLogger.info(f"ALU initialized. Architecture: {self.bits}-bit.")
         
     def registers(self):
         aluLogger.info(f"Registers status after {self.cycles} cycles:")
@@ -41,7 +41,7 @@ class ALU:
         aluLogger.info(f"CX: {self.REGISTERS[2]}")
         
     def status(self):
-        aluLogger.info(f"Architecture size: {self.bits}bit")
+        aluLogger.info(f"Architecture size: {self.bits}-bit")
         aluLogger.info(f"Registers status after {self.cycles} cycles:")
         aluLogger.info(f"AX: {self.REGISTERS[0]}")
         aluLogger.info(f"BX: {self.REGISTERS[1]}")
@@ -162,9 +162,9 @@ class ALU:
             aluLogger.info("Executed instruction. Exec cycle complete")
             self.execPost(memory)
             aluLogger.info("Post checks done")
-            memory.writeMemory()      
+            memory.writeMemory()
         return
-    
+
 def main():
     pass
 
