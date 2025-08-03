@@ -14,24 +14,24 @@ from constants import *
 ml = logging.getLogger(__name__)
 
 instructionSet = {
-    "10000000": "NOP", # no operation DONE
-    "10000001": "ADD", # add value to accumulator DONE
-    "10000010": "SUB", # subtract value from accumulator DONE
-    "10000011": "ADC", # add value to accumulator, with carry flag DONE
-    "10000100": "SBB", # subtract value from accumulator, with carry flag as borrow DONE
+    "10000000": "NOP", # no operation DONE 80
+    "10000001": "ADD", # add value to accumulator DONE 81
+    "10000010": "SUB", # subtract value from accumulator DONE 82
+    "10000011": "ADC", # add value to accumulator, with carry flag DONE 82
+    "10000100": "SBB", # subtract value from accumulator, with carry flag as borrow DONE 84
     "10000101": "AND", # do a logical AND between provided operand and AX, store result in AX
     "10000110": "NOT", # logical NOT on the value provided, store in AX
     "10000111": "OR",  # logical OR between value provided and AX, store result in AX
     "10001000": "XOR", # logical XOR between value provided
-    "10001001": "LHA", # load immediate value to high halfword of AX DONE
-    "10001010": "LLA", # load immediate value to low halfword of AX DONE
-    "10001011": "LHB", # load immediate value to high halfword of BX DONE
-    "10001100": "LLB", # load immediate value to low halfword of BX DONE
-    "10001101": "LHC", # load immediate value to high halfword of CX DONE
-    "10001110": "LLC", # load immediate value to low halfword to CX DONE
-    "10001111": "INC", # increment a register DONE
-    "10010000": "DEC", # decrement a register DONE
-    "10010001": "JMP", # jump to a row of instruction DONE
+    "10001001": "LHA", # load immediate value to high halfword of AX DONE 89
+    "10001010": "LLA", # load immediate value to low halfword of AX DONE 8A
+    "10001011": "LHB", # load immediate value to high halfword of BX DONE 8B
+    "10001100": "LLB", # load immediate value to low halfword of BX DONE 8C
+    "10001101": "LHC", # load immediate value to high halfword of CX DONE 8D
+    "10001110": "LLC", # load immediate value to low halfword to CX DONE 8E
+    "10001111": "INC", # increment a register DONE 8F
+    "10010000": "DEC", # decrement a register DONE 90
+    "10010001": "JMP", # jump to a row of instruction DONE 91
     "10010010": "JZ",  # jump to row if ZF = 1
     "10010011": "JNZ", # jump to row if ZF = 0
     "10010100": "MOV", # move next row into the register defined by the last 3 bits of the row; 0,1,2
