@@ -22,6 +22,6 @@ flask --app app run
 ```
 
 ## Short term todo
-- implement all the microcodes
-- solve underflow problem
-- switch to ajax
+- Implement all microcodes
+- Switch to ajax
+- Add transaction lock so pages aren't refreshed in the middle of a cycle
