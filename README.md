@@ -22,6 +22,5 @@ flask --app app run
 ```
 
 ## Short term todo
-- Implement all microcodes
-- Switch to ajax
+- Refactor to folders ffs
 - Add transaction lock so pages aren't refreshed in the middle of a cycle
